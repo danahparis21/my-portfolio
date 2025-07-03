@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,5 +77,6 @@ button:focus-visible {
   }
 }
 
-
-
+.glow-text {
+  text-shadow: 0 0 8px #fbf1fe, 0 0 16px #764ed4;
+}
