@@ -7,12 +7,9 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark text-white">
+    <div className="min-h-screen  text-white font-sans">
       <Navbar />
-
-      <div className="bg-dark text-white min-h-screen font-sans">
       <Home />
-    </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[50%] max-w-5xl h-12 bg-white/10 dark:bg-white/10 backdrop-blur-lg border border-white/20 px-10 rounded-full flex items-center justify-between shadow-md z-50 font-sans">
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[40%] max-w-5xl h-12 bg-white/10 dark:bg-white/10 backdrop-blur-lg border border-white/20 px-10 rounded-full flex items-center justify-between shadow-md z-50 font-sans">
       {/* Left: Name */}
       <div className="text-lg font-bold text-white tracking-wide">
         Danah Paris
