@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+ 
 
   --holo-color-1: #2a1188;
   --holo-color-2: #84559d;
@@ -47,4 +44,24 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* For smoother glow effects */
+.glow-text {
+  text-shadow: 0 0 10px rgba(110, 90, 255, 0.7), 
+               0 0 20px rgba(110, 90, 255, 0.5),
+               0 0 30px rgba(110, 90, 255, 0.3);
+}
+
+/* Smooth transition between sections */
+section {
+  scroll-snap-align: start;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+html, body {
+  overflow-x: hidden;
 }

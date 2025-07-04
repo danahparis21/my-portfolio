@@ -7,32 +7,31 @@ export default {
         holo: `linear-gradient(
           135deg,
            #070918 0%,
-    #070918 6%,
-    #2a1188 10%,
-    #070918 14%,
-    #84559d 20%,
-    #070918 26%,
-    #5036d5 35%,
-    #070918 45%,
-    #c056b5 55%,
-    #070918 65%,
-    #fea4fe 75%,
-    #070918 85%,
-    #070918 100%
+          #070918 6%,
+          #2a1188 10%,
+          #070918 14%,
+          #84559d 20%,
+          #070918 26%,
+          #5036d5 35%,
+          #070918 45%,
+          #c056b5 55%,
+          #070918 65%,
+          #fea4fe 75%,
+          #070918 85%,
+          #070918 100%
         )`,
       },
       keyframes: {
+        // Your existing animations
         holoMove: {
           "0%": { backgroundPosition: "0% 0%" },
           "100%": { backgroundPosition: "400% 400%" },
         },
-        // Add to your tailwind config
         glow: {
           0: "0 0 0px rgba(255, 255, 255, 0)",
           50: "0 0 10px rgba(255, 255, 255, 0.3)",
           100: "0 0 20px rgba(255, 255, 255, 0.5)",
         },
-
         fadeInUp: {
           "0%": { opacity: "0", transform: "translateY(40px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -59,12 +58,28 @@ export default {
             textShadow: "0 0 8px rgba(255,255,255,0.5)",
           },
         },
+        
+        // New animations to add
+        float: {
+          '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+          '50%': { transform: 'translateY(-20px) translateX(10px)' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '0.7' },
+          '50%': { opacity: '0.4' },
+        }
       },
       animation: {
+       
         holoMove: "holoMove 300s linear infinite",
         fadeInUp: "fadeInUp 1s ease-out both",
         letterGlow: "letterGlow 1.5s ease-in-out infinite",
         subtleGlow: "subtleGlow 10s ease-in-out infinite",
+    
+        float: 'float 8s ease-in-out infinite',
+        floatSlow: 'float 12s ease-in-out infinite',
+        pulse: 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        pulseSlow: 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       fontFamily: {
         sans: ['"Open Sans"', "sans-serif"],

@@ -64,28 +64,37 @@ function Home() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-transparent pt-28">
-    {/* 🔥 Solid Base Dark Background */}
-    <div className="fixed inset-0 -z-40 bg-[#070918]" />
-  
-    <div className="fixed inset-0 pointer-events-none z-[-20] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay" />
+    <section className="relative bg-transparent pt-48 pb-48">
 
-    {/* 🔮 Animated Gradient Overlay */}
-    <div
-  style={{ willChange: 'background-position' }}
-  className="fixed inset-0 z-[-30] bg-holo bg-[length:300%_300%] animate-holoMove opacity-40 backdrop-blur-xl bg-white/5
+
+      {/* 🔥 Solid Base Dark Background */}
+      <div className="fixed inset-0 -z-40 bg-[#070918]" />
+
+      <div className="fixed inset-0 pointer-events-none z-[-20] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay" />
+
+      {/* 🔮 Animated Gradient Overlay */}
+      <div
+        style={{ willChange: "background-position" }}
+        className="fixed inset-0 z-[-30] bg-holo bg-[length:300%_300%] animate-holoMove opacity-40 backdrop-blur-xl bg-white/5
  mix-blend-soft-light"
-/>
+      />
 
+      {/* ✨ Radial Spotlight Mask */}
+      <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white_30%,transparent_80%)] z-[-20]" />
 
-  
-    {/* ✨ Radial Spotlight Mask */}
-    <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white_30%,transparent_80%)] z-[-20]" />
-  
-    {/* 🌫️ Optional: Subtle Noise */}
-    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] opacity-5 z-[-10] mix-blend-overlay pointer-events-none" />
+      {/* 🌫️ Optional: Subtle Noise */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] opacity-5 z-[-10] mix-blend-overlay pointer-events-none" />
 
-  {/* HOME CONTENT */}
+      {/* 🌟 Decorative Glowing Circles */}
+      <div className="absolute top-[-100px] left-[-150px] w-[400px] h-[400px] rounded-full blur-[140px] opacity-80 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-glow2 to-transparent rounded-full animate-pulseSlow" />
+      </div>
+
+      <div className="absolute top-[-80px] right-[-150px] w-[400px] h-[400px] rounded-full blur-[140px] opacity-80 z-0">
+        <div className="absolute inset-0 bg-gradient-to-tr from-glow3 to-transparent rounded-full animate-pulseSlow" />
+      </div>
+
+      {/* HOME CONTENT */}
       {/* Top Row: Profile Picture + Name + Location */}
       <div className="flex flex-col md:flex-row items-center justify-center px-4 text-white gap-4 animate-fadeInUp">
         <img
@@ -169,7 +178,9 @@ function Home() {
           </a>
         ))}
       </div>
-    </section>
+
+      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-b from-transparent to-[#070918] z-10 pointer-events-none" />
+      </section>
   );
 }
 

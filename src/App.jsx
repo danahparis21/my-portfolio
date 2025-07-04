@@ -4,13 +4,16 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import TechStack from "./components/TechStack"; 
 
 function App() {
   return (
-    <div className="min-h-screen  text-white font-sans">
+    <div className="text-white font-sans">
       <Navbar />
       <Home />
+      <TechStack />
     </div>
   );
 }
+
 export default App;
