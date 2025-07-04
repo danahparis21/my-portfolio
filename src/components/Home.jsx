@@ -65,8 +65,6 @@ function Home() {
 
   return (
     <section className="relative bg-transparent pt-48 pb-48">
-
-
       {/* 🔥 Solid Base Dark Background */}
       <div className="fixed inset-0 -z-40 bg-[#070918]" />
 
@@ -79,20 +77,69 @@ function Home() {
  mix-blend-soft-light"
       />
 
-      {/* ✨ Radial Spotlight Mask */}
       <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white_30%,transparent_80%)] z-[-20]" />
 
-      {/* 🌫️ Optional: Subtle Noise */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] opacity-5 z-[-10] mix-blend-overlay pointer-events-none" />
 
-      {/* 🌟 Decorative Glowing Circles */}
-      <div className="absolute top-[-100px] left-[-150px] w-[400px] h-[400px] rounded-full blur-[140px] opacity-80 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-glow2 to-transparent rounded-full animate-pulseSlow" />
+      {/* MORE DECORATIONS */}
+      {/* Dark */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full blur-[80px] z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-purple-900/60 rounded-full mix-blend-multiply" />
       </div>
 
-      <div className="absolute top-[-80px] right-[-150px] w-[400px] h-[400px] rounded-full blur-[140px] opacity-80 z-0">
-        <div className="absolute inset-0 bg-gradient-to-tr from-glow3 to-transparent rounded-full animate-pulseSlow" />
+      {/*  Enhanced Central Glow
+      <div className="absolute top-[-180px] left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-[180px] opacity-95 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-glow4 via-purple-400 to-transparent rounded-full animate-pulseSlow mix-blend-screen" />
+      </div> */}
+
+      {/*  Strong Left Spotlight */}
+      <div className="absolute top-[-150px] left-[-200px] w-[800px] h-[400px] blur-[150px] opacity-90 z-10 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-glow2 via-pink-400 to-transparent animate-pulseSlow mix-blend-lighten"
+          style={{ clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)" }}
+        />
       </div>
+
+      {/* Right Glare  */}
+      <div className="absolute top-[-150px] right-[-150px] w-[500px] h-[500px] rounded-full blur-[150px] opacity-90 z-0">
+        <div className="absolute inset-0 bg-gradient-to-bl from-glow3 via-amber-200 to-transparent rounded-full animate-pulseSlow mix-blend-screen" />
+      </div>
+
+      {/*  Horizontal Glare Line  */}
+      <div className="absolute top-[50px] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-glow5/90 to-transparent opacity-80 blur-[6px] z-10 animate-pulseSlow" />
+
+      {/* random circles, changes every refresh */}
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className={`absolute rounded-full blur-[60px] opacity-80 z-0 animate-floatSlow pointer-events-none mix-blend-screen`}
+          style={{
+            width: `${100 + Math.random() * 100}px`,
+            height: `${100 + Math.random() * 100}px`,
+            top: `${-50 + Math.random() * 150}px`,
+            left: `${Math.random() * 100}%`,
+            background: `radial-gradient(circle, ${
+              [
+                "#f0abfc",
+                "#93c5fd",
+                "#86efac",
+                "#fca5a5",
+                "#fcd34d",
+                "#c4b5fd",
+              ][i]
+            } 0%, transparent 70%)`,
+            animationDuration: `${15 + Math.random() * 20}s`,
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        />
+      ))}
+
+      {/* Horizontal Glare Line */}
+      <div className="absolute top-[50px] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-glow5/80 to-transparent opacity-70 blur-[6px] z-0 animate-pulseSlow" />
+
+      {/* 🔥 Secondary Soft Beams  */}
+      <div className="absolute top-[-400px] left-[-350px] w-[1000px] h-[600px] rotate-[35deg] bg-gradient-to-l from-glow2/50 via-glow3/30 to-transparent opacity-25 blur-[80px] z-0 animate-pulseSlow pointer-events-none" />
+      <div className="absolute top-[-380px] left-[-320px] w-[1100px] h-[120px] rotate-[32deg] bg-gradient-to-l from-glow2/40 via-glow3/20 to-transparent opacity-20 blur-[60px] z-0 animate-pulseSlow pointer-events-none" />
 
       {/* HOME CONTENT */}
       {/* Top Row: Profile Picture + Name + Location */}
@@ -180,7 +227,7 @@ function Home() {
       </div>
 
       <div className="absolute bottom-0 w-full h-40 bg-gradient-to-b from-transparent to-[#070918] z-10 pointer-events-none" />
-      </section>
+    </section>
   );
 }
 

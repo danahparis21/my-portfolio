@@ -1,6 +1,7 @@
 export default {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
+  
   theme: {
     extend: {
       backgroundImage: {
@@ -20,12 +21,14 @@ export default {
           #070918 85%,
           #070918 100%
         )`,
+
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       keyframes: {
         // Your existing animations
         holoMove: {
           "0%": { backgroundPosition: "0% 0%" },
-          "100%": { backgroundPosition: "400% 400%" },
+          "100%": { backgroundPosition: "100% 100%" }, // ✅ fix here
         },
         glow: {
           0: "0 0 0px rgba(255, 255, 255, 0)",
@@ -70,8 +73,7 @@ export default {
         }
       },
       animation: {
-       
-        holoMove: "holoMove 300s linear infinite",
+        holoMove: "holoMove 300s ease-in-out infinite", 
         fadeInUp: "fadeInUp 1s ease-out both",
         letterGlow: "letterGlow 1.5s ease-in-out infinite",
         subtleGlow: "subtleGlow 10s ease-in-out infinite",
@@ -94,5 +96,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 };
