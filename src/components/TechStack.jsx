@@ -91,7 +91,12 @@ const TechStack = () => {
             </div>
           ))}
         </div>
+        
       </div>
+      {/* Gradient Bridge to Projects */}
+<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#070918] pointer-events-none z-0" />
+
+      
     </section>
   );
 };
