@@ -65,12 +65,12 @@ function Home() {
 
   return (
     <section className="relative bg-transparent pt-48 pb-48">
-      {/* 🔥 Solid Base Dark Background */}
+      {/* Solid Base Dark Background */}
       <div className="fixed inset-0 -z-40 bg-[#070918]" />
 
       <div className="fixed inset-0 pointer-events-none z-[-20] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay" />
 
-      {/* 🔮 Animated Gradient Overlay */}
+      {/* Animated Gradient Overlay */}
       <div
         style={{ willChange: "background-position" }}
         className="fixed inset-0 z-[-30] bg-holo bg-[length:300%_300%] animate-holoMove opacity-40 backdrop-blur-xl bg-white/5
@@ -87,11 +87,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-purple-900/60 rounded-full mix-blend-multiply" />
       </div>
 
-      {/*  Enhanced Central Glow
-      <div className="absolute top-[-180px] left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-[180px] opacity-95 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-glow4 via-purple-400 to-transparent rounded-full animate-pulseSlow mix-blend-screen" />
-      </div> */}
-
+    
       {/*  Strong Left Spotlight */}
       <div className="absolute top-[-150px] left-[-200px] w-[800px] h-[400px] blur-[150px] opacity-90 z-10 overflow-hidden">
         <div
@@ -137,7 +133,7 @@ function Home() {
       {/* Horizontal Glare Line */}
       <div className="absolute top-[50px] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-glow5/80 to-transparent opacity-70 blur-[6px] z-0 animate-pulseSlow" />
 
-      {/* 🔥 Secondary Soft Beams  */}
+      {/*  Secondary Soft Beams  */}
       <div className="absolute top-[-400px] left-[-350px] w-[1000px] h-[600px] rotate-[35deg] bg-gradient-to-l from-glow2/50 via-glow3/30 to-transparent opacity-25 blur-[80px] z-0 animate-pulseSlow pointer-events-none" />
       <div className="absolute top-[-380px] left-[-320px] w-[1100px] h-[120px] rotate-[32deg] bg-gradient-to-l from-glow2/40 via-glow3/20 to-transparent opacity-20 blur-[60px] z-0 animate-pulseSlow pointer-events-none" />
 

@@ -4,63 +4,82 @@ import { useState, useEffect } from "react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/autoplay"; // optional, autoplay works without it
+import "swiper/css/autoplay"; 
 import { Parallax } from "../components/Parallax";
-import Modal from "../components/Modal"; // adjust path as needed
+import Modal from "../components/Modal"; 
+import andoksProject from "../data/andoks"; 
+import login from "../data/login"; 
+import serenityCove from "../data/serenityCove"; 
+import attendanceQr from "../data/attendanceQr"; 
+import myCalendar from "../data/myCalendar"; 
 
 const projects = [
-  {
-    title: "Andok’s Food Ordering System",
-    shortDescription: "A full-featured desktop app for ordering and delivery with real-time tracking, built for Andok’s.",
-    description: `
-A full-featured desktop food ordering and delivery system built using JavaFX, tailored for Andok’s, a local restaurant business. This system supports admin, rider, and customer roles with dashboards, real-time order tracking, email notifications, analytics, and more.
-
-Key Features:
-- Role-based login (Admin, Rider, Customer)
-- Real-time order tracking & notifications
-- Cash, Card, or GCash payment options
-- Admin analytics dashboard + PDF reports
-- MySQL backend + secure SHA-256 hashing
-- Audit trail, events, triggers, stored procedures
-
-Tech Stack:
-JavaFX · JavaMail · iText PDF · JDBC · MySQL · SHA-256
-
-Developed by Danah Paris (BSIT – BatStateU, ARASOF Nasugbu)
-    `,
-    image: "/images/andoks.jpg",
-    github: "https://github.com/danahparis21/FoodDeliverySystem",
-    video: "/videos/andoks-demo.mp4" // optional if you have it
-  },
-  { title: "Project Two", description: "Consectetur adipiscing elit." },
-  { title: "Project Three", description: "Sed do eiusmod tempor." },
-  { title: "Project Four", description: "Incididunt ut labore et dolore." },
-  {
-    title: "Project Five",
-    description: "Another one to make it loop both ways.",
-  },
+  andoksProject,
+  login,
+  serenityCove,
+  attendanceQr,
+  myCalendar
 ];
 
-
-
 const Projects = () => {
-    const [selectedProject, setSelectedProject] = useState(null);
-const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-const openModal = (project) => {
-  setSelectedProject(project);
-  setIsModalOpen(true);
-};
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
-const closeModal = () => {
-  setIsModalOpen(false);
-  setSelectedProject(null);
-};
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <section className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12">
-      {/* Gradient Bridge from TechStack */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#070918] pointer-events-none z-0" />
+      {/* Gradient Bridge with Pulsing Glow */}
+      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#070918] pointer-events-none z-0 animate-gradient-pulse" />
+
+      {/* Shooting Star with Saturated Glow */}
+      <div className="absolute top-[5vh] left-1/2 -translate-x-1/2 z-[-10] scale-[2.5] origin-center pointer-events-none animate-shooting">
+        {/* Core */}
+        <div className="absolute w-8 h-8 rounded-full bg-white blur-[30px] animate-slow-explode" />
+        <div
+          className="absolute w-6 h-6 rounded-full bg-[#f993fe] blur-[20px] animate-slow-explode"
+          style={{ animationDelay: "1.5s" }}
+        />
+        <div
+          className="absolute w-4 h-4 rounded-full bg-white blur-[5px] animate-slow-explode"
+          style={{ animationDelay: "3s" }}
+        />
+
+        {/* Tail Glow */}
+        <div className="absolute top-[5px] left-[10px] w-[600px] h-[30px] -rotate-[30deg] animate-slow-flash">
+          <div className="w-full h-full bg-gradient-to-r from-[#f993fe] via-[#470063] to-transparent blur-[25px] rounded-full" />
+        </div>
+
+        {/* Stardust */}
+        <div className="absolute top-[25px] left-[120px] w-[350px] h-[3px] -rotate-[30deg]">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-slow-dance"
+              style={{
+                left: `${i * 45}px`,
+                width: `${1 + Math.random() * 2}px`,
+                height: `${1 + Math.random() * 2}px`,
+                backgroundColor: i % 2 ? "#f993fe" : "white",
+                animationDelay: `${i * 2}s`,
+                filter: "blur(1px)",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Aura */}
+        <div className="absolute top-[-25px] left-[-25px] w-[80px] h-[80px] rounded-full bg-[#f993fe]/30 blur-[30px] animate-slow-expand" />
+      </div>
 
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#070918] -z-40" />
@@ -85,6 +104,7 @@ const closeModal = () => {
           centeredSlides={true}
           slidesPerView={"auto"}
           loop={true}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           //   autoplay={{
           //     delay: 3500,
           //     disableOnInteraction: false,
@@ -104,24 +124,35 @@ const closeModal = () => {
               key={index}
               className="!w-[320px] md:!w-[400px] px-2 !h-[520px]"
             >
-              <Parallax className="bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 hover:border-white/20 transition flex flex-col justify-between h-[480px] md:h-[480px]">
-                {/* Image */}
+              <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[500px]">
+                {/* ✅ Only render shimmer on active slide */}
+                {index === activeIndex && (
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                    <div className="absolute inset-0 w-full h-full [transform:skewX(-20deg)_translateX(-100%)] animate-[shimmer_1.2s_ease-out_300ms_forwards]">
+                      <div className="w-1/5 h-full bg-[#a8a8a8]/30 blur-[30px]" />
+                    </div>
+                  </div>
+                )}
+
+                {/* 🖼 Image */}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="rounded-lg mb-4 object-cover h-52 w-full"
+                  className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
                 />
 
-                {/* Title */}
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                {/* 📝 Title */}
+                <h3 className="text-xl font-semibold mb-2 z-10 relative">
+                  {project.title}
+                </h3>
 
-                {/* Description */}
-                <p className="text-white/70 text-sm mb-4">
+                {/* 📄 Short Description */}
+                <p className="text-white/70 text-sm mb-4 z-10 relative">
                   {project.shortDescription}
                 </p>
 
-                {/* Buttons */}
-                <div className="mt-auto flex gap-3">
+                {/* 🔘 Buttons */}
+                <div className="mt-auto flex gap-3 z-10 relative">
                   <a
                     href={project.github}
                     target="_blank"
@@ -141,8 +172,11 @@ const closeModal = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <Modal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
-
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          project={selectedProject}
+        />
       </div>
     </section>
   );

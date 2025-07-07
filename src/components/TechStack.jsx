@@ -34,7 +34,7 @@ const TechStack = () => {
           <p className="uppercase tracking-widest text-sm text-white/60 mb-2">
             my tools & languages
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold animate-fadeInUp">
+          <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 animate-fadeInUp bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
             Tech Stack
           </h2>
         </div>
@@ -64,14 +64,14 @@ const TechStack = () => {
                     : "opacity-0"
                 }`}
                 style={{
-                    transitionDuration: hoveredIndex === index ? "200ms" : "2000ms",
-                    boxShadow: `
+                  transitionDuration:
+                    hoveredIndex === index ? "200ms" : "2000ms",
+                  boxShadow: `
                       0 0 8px 2px ${glow},
                       0 0 12px 3px ${glow}
                     `,
-                    background: "transparent"
-                  }}
-                  
+                  background: "transparent",
+                }}
               ></div>
 
               {/* Icon */}
@@ -91,12 +91,9 @@ const TechStack = () => {
             </div>
           ))}
         </div>
-        
       </div>
       {/* Gradient Bridge to Projects */}
-<div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#070918] pointer-events-none z-0" />
-
-      
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#070918] pointer-events-none z-0" />
     </section>
   );
 };
