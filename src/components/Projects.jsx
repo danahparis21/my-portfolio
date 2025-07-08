@@ -177,24 +177,24 @@ const Projects = () => {
           slidesPerView={"auto"}
           loop={true}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          // Use your refined mouse handlers
+      
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          // Use your refined touch/drag handlers
+    
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          onSliderMove={handleTouchStart} // Treat slider move as touch start for depth
-          onTransitionEnd={handleTouchEnd} // Revert depth after transition finishes (for drag or touch)
+          onSliderMove={handleTouchStart} 
+          onTransitionEnd={handleTouchEnd} 
           // Autoplay configuration
           autoplay={{
             delay: 3500,
-            disableOnInteraction: false, // Allows autoplay to resume
-            pauseOnMouseEnter: true, // Swiper's built-in pause on hover
+            disableOnInteraction: false, 
+            pauseOnMouseEnter: true, 
           }}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
-            // Initial values, will be overridden by direct params manipulation
+         
             depth: 20,
             modifier: 2.5,
             slideShadows: false,
