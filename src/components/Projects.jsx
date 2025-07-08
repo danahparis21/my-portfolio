@@ -36,12 +36,11 @@ const Projects = () => {
 
   const setCoverflowDepth = (depthValue) => {
     if (swiperRef.current && !swiperRef.current.destroyed) {
- 
       swiperRef.current.params.coverflowEffect.depth = depthValue;
       swiperRef.current.params.coverflowEffect.modifier =
         depthValue === 300 ? 3 : 2.5;
       swiperRef.current.update();
-      // swiperRef.current.setTranslate(); 
+      // swiperRef.current.setTranslate();
     }
   };
 
@@ -53,7 +52,7 @@ const Projects = () => {
     if (!isTouchOrDragActive) {
       hoverTimeout.current = setTimeout(() => {
         setCoverflowDepth(300);
-      }, 100); 
+      }, 100);
     }
   };
 
@@ -84,26 +83,23 @@ const Projects = () => {
     if (swiperRef.current && swiperRef.current.autoplay) {
       swiperRef.current.autoplay.start();
     }
-  
+
     setTimeout(() => {
       if (!isTouchOrDragActive) {
         // Ensure no new interaction started during timeout
         setCoverflowDepth(200);
       }
-    }, 300); 
+    }, 300);
   };
 
   // Handle auto-play starting/stopping
   const handleAutoplayStart = () => {
-
     if (!isTouchOrDragActive) {
       setCoverflowDepth(120);
     }
   };
 
-
   useEffect(() => {
-  
     return () => {
       if (hoverTimeout.current) {
         clearTimeout(hoverTimeout.current);
@@ -189,15 +185,12 @@ const Projects = () => {
           onTouchEnd={handleTouchEnd}
           onSliderMove={handleTouchStart} // Treat slider move as touch start for depth
           onTransitionEnd={handleTouchEnd} // Revert depth after transition finishes (for drag or touch)
-
           // Autoplay configuration
           autoplay={{
             delay: 3500,
             disableOnInteraction: false, // Allows autoplay to resume
             pauseOnMouseEnter: true, // Swiper's built-in pause on hover
           }}
-       
-
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -209,69 +202,68 @@ const Projects = () => {
           modules={[EffectCoverflow, Autoplay]}
           className="w-full max-w-[95vw] py-8 transition-all duration-700"
         >
-            {projects.map((project, index) => (
-              <SwiperSlide
-                key={index}
-                className={`!w-[320px] md:!w-[400px] px-2 !h-[520px] transition-transform duration-500 ${
-                  index === activeIndex
-                    ? "scale-95 z-10"
-                    : "scale-[1.08] z-20 opacity-100"
-                }`}
-              >
-                <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[520px]">
-                  {index === activeIndex && (
-                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-                      <div className="absolute inset-0 w-full h-full [transform:skewX(-20deg)_translateX(-100%)] animate-[shimmer_1.2s_ease-out_300ms_forwards]">
-                        <div className="w-1/5 h-full bg-[#a8a8a8]/30 blur-[30px]" />
-                      </div>
+          {projects.map((project, index) => (
+            <SwiperSlide
+              key={index}
+              className={`!w-[320px] md:!w-[400px] px-2 !h-[520px] transition-transform duration-500 ${
+                index === activeIndex
+                  ? "scale-95 z-10"
+                  : "scale-[1.08] z-20 opacity-100"
+              }`}
+            >
+              <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[520px]">
+                {index === activeIndex && (
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                    <div className="absolute inset-0 w-full h-full [transform:skewX(-20deg)_translateX(-100%)] animate-[shimmer_1.2s_ease-out_300ms_forwards]">
+                      <div className="w-1/5 h-full bg-[#a8a8a8]/30 blur-[30px]" />
                     </div>
-                  )}
-
-                  {/* 🖼 Image */}
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
-                  />
-
-                  {/* 📝 Title */}
-                  <h3 className="text-xl font-semibold mb-2 z-10 relative">
-                    {project.title}
-                  </h3>
-
-                  {/* 📄 Short Description */}
-                  <p className="text-white/70 text-sm mb-4 z-10 relative">
-                    {project.shortDescription}
-                  </p>
-
-                  {/* 🔘 Buttons */}
-                  <div className="mt-auto flex gap-3 z-10 relative">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
-                    >
-                      GitHub
-                    </a>
-                    <a
-                      onClick={() => openModal(project)}
-                      className="cursor-pointer px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
-                    >
-                      Read More
-                    </a>
                   </div>
-                </Parallax>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          project={selectedProject}
-        />
+                )}
 
+                {/* 🖼 Image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
+                />
+
+                {/* 📝 Title */}
+                <h3 className="text-xl font-semibold mb-2 z-10 relative">
+                  {project.title}
+                </h3>
+
+                {/* 📄 Short Description */}
+                <p className="text-white/70 text-sm mb-4 z-10 relative">
+                  {project.shortDescription}
+                </p>
+
+                {/* 🔘 Buttons */}
+                <div className="mt-auto flex gap-3 z-10 relative">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    onClick={() => openModal(project)}
+                    className="cursor-pointer px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
+                  >
+                    Read More
+                  </a>
+                </div>
+              </Parallax>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        project={selectedProject}
+      />
     </section>
   );
 };

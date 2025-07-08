@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import GlowCircles from "./GlowCircles";
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const techIcons = [
   { icon: "devicon-java-plain", label: "Java", glow: "#f89820" },
@@ -14,9 +16,131 @@ const techIcons = [
   { icon: "devicon-tailwindcss-plain", label: "Tailwind CSS", glow: "#38bdf8" },
 ];
 
+
+
+const DraggableTechIcon = ({ iconData, index, moveItem, hoveredIndex, setHoveredIndex, fadingIndex, setFadingIndex, isDraggingOver, draggedItemIndex,  shiftDirection }) => {
+  const [{ isDragging }, drag] = useDrag({
+    type: 'TECH_ICON',
+    item: { index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const [{ isOver }, drop] = useDrop({
+    accept: 'TECH_ICON',
+    hover: (draggedItem, monitor) => {
+     
+      if (draggedItem.index !== index) {
+        moveItem(draggedItem.index, index);
+      
+        draggedItem.index = index;
+      }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
+
+  const { icon, label, glow } = iconData;
+
+  const getShiftTransform = () => {
+    if (isDragging) return 'scale(1.05) translateX(0px)';
+  
+    // Animate shift if another item is being dragged
+    if (draggedItemIndex !== null && shiftDirection !== 0) {
+      return `translateX(${shiftDirection * 40}px)`; // shift 40px left/right
+    }
+  
+    return 'translateX(0px)';
+  };
+  
+
+  return (
+    <div
+      ref={(node) => drag(drop(node))}
+      onMouseEnter={() => {
+        setHoveredIndex(index);
+        setFadingIndex(null);
+      }}
+      onMouseLeave={() => {
+        setHoveredIndex(null);
+        setFadingIndex(index);
+        setTimeout(() => {
+          setFadingIndex(null);
+        }, 10000);
+      }}
+      className={`group relative flex flex-col items-center text-6xl p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md transition-all duration-300 hover:border-white/20 overflow-visible ${
+        isDragging ? 'opacity-50 z-50' : 'opacity-100 z-10'
+      }`}
+      style={{
+        cursor: 'move',
+    
+        transform: `${getShiftTransform()} ${isDragging ? 'scale(1.05)' : 'scale(1)'}`,
+        transition: 'transform 0.3s ease, opacity 0.2s ease',
+      
+        pointerEvents: isDragging ? 'none' : 'auto',
+      }}
+    >
+      {/* Glow */}
+      <div
+        className={`absolute inset-0 rounded-xl z-0 pointer-events-none transition-opacity blur-md ${
+          hoveredIndex === index || fadingIndex === index
+            ? 'opacity-100'
+            : 'opacity-0'
+        }`}
+        style={{
+          transitionDuration: hoveredIndex === index ? '200ms' : '2000ms',
+          boxShadow: `
+            0 0 8px 2px ${glow},
+            0 0 12px 3px ${glow}
+          `,
+          background: 'transparent',
+        }}
+      ></div>
+
+      {/* Icon */}
+      <span
+        className={`relative z-10 transition-colors duration-300 ${
+          hoveredIndex === index ? 'text-[inherit]' : 'text-white'
+        }`}
+        style={hoveredIndex === index ? { color: glow } : {}}
+      >
+        <i className={icon}></i>
+      </span>
+
+      {/* Label */}
+      <p className="mt-3 text-sm text-white/60 group-hover:text-white/80 uppercase tracking-widest relative z-10 transition-colors duration-300">
+        {label}
+      </p>
+    </div>
+  );
+};
+
 const TechStack = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [fadingIndex, setFadingIndex] = useState(null);
+  const [techItems, setTechItems] = useState(techIcons);
+  const [isDraggingOverGrid, setIsDraggingOverGrid] = useState(false);
+  const [draggedItemIndex, setDraggedItemIndex] = useState(null); 
+
+  const moveItem = (fromIndex, toIndex) => {
+
+    setTechItems((prevItems) => {
+      const updatedItems = [...prevItems];
+      const [movedItem] = updatedItems.splice(fromIndex, 1);
+      updatedItems.splice(toIndex, 0, movedItem);
+      return updatedItems;
+    });
+  };
+
+  const handleDragStart = (index) => {
+    setDraggedItemIndex(index);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedItemIndex(null);
+  };
 
   return (
     <section className="relative w-full min-h-[70vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12">
@@ -39,58 +163,47 @@ const TechStack = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 mt-8">
-          {techIcons.map(({ icon, label, glow }, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => {
-                setHoveredIndex(index);
-                setFadingIndex(null);
-              }}
-              onMouseLeave={() => {
-                setHoveredIndex(null);
-                setFadingIndex(index);
-                setTimeout(() => {
-                  setFadingIndex(null);
-                }, 10000); // 1s fade-out duration
-              }}
-              className="group relative flex flex-col items-center text-6xl p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md transition-all duration-300 hover:border-white/20 overflow-visible"
-            >
-              {/* Glow */}
-              <div
-                className={`absolute inset-0 rounded-xl z-0 pointer-events-none transition-opacity blur-md ${
-                  hoveredIndex === index || fadingIndex === index
-                    ? "opacity-100"
-                    : "opacity-0"
-                }`}
-                style={{
-                  transitionDuration:
-                    hoveredIndex === index ? "200ms" : "2000ms",
-                  boxShadow: `
-                      0 0 8px 2px ${glow},
-                      0 0 12px 3px ${glow}
-                    `,
-                  background: "transparent",
-                }}
-              ></div>
+        <DndProvider backend={HTML5Backend}>
+          <div
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 mt-8"
+            onDragEnter={() => setIsDraggingOverGrid(true)}
+            onDragLeave={() => setIsDraggingOverGrid(false)}
+          >
+            {techItems.map((item, index) => {
+  let shift = 0;
 
-              {/* Icon */}
-              <span
-                className={`relative z-10 transition-colors duration-300 ${
-                  hoveredIndex === index ? "text-[inherit]" : "text-white"
-                }`}
-                style={hoveredIndex === index ? { color: glow } : {}}
-              >
-                <i className={icon}></i>
-              </span>
+  if (
+    draggedItemIndex !== null &&
+    draggedItemIndex !== index
+  ) {
+    if (draggedItemIndex < index) {
+      shift = -1; // shift left
+    } else if (draggedItemIndex > index) {
+      shift = 1; // shift right
+    }
+  }
 
-              {/* Label */}
-              <p className="mt-3 text-sm text-white/60 group-hover:text-white/80 uppercase tracking-widest relative z-10 transition-colors duration-300">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
+  return (
+    <DraggableTechIcon
+      key={index}
+      index={index}
+      iconData={item}
+      moveItem={moveItem}
+      hoveredIndex={hoveredIndex}
+      setHoveredIndex={setHoveredIndex}
+      fadingIndex={fadingIndex}
+      setFadingIndex={setFadingIndex}
+      isDraggingOver={isDraggingOverGrid}
+      draggedItemIndex={draggedItemIndex}
+      shiftDirection={shift}
+      onDragStart={() => handleDragStart(index)}
+      onDragEnd={handleDragEnd}
+    />
+  );
+})}
+
+          </div>
+        </DndProvider>
       </div>
       {/* Gradient Bridge to Projects */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#070918] pointer-events-none z-0" />
