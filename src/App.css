@@ -72,4 +72,28 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
+/* Smooth transitions for Swiper */
+.swiper {
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+.swiper-slide {
+  transition: 
+    transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.3s ease !important;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Hardware acceleration for smoother animations */
+.swiper-coverflow .swiper-slide {
+  transform: translate3d(0, 0, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .swiper,
+  .swiper-slide {
+    transition: none !important;
+  }
+}
 

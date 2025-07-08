@@ -56,9 +56,9 @@ const myCalendarProject = {
   Feel free to explore and customize — just credit the authors properly.
   
     `,
-    image: "/images/mycalendar.jpg", // Replace with actual screenshot path
+    image: "/images/myCalendar.png", 
     github: "https://github.com/danahparis21/calendar_websystem",
-    video: "/videos/mycalendar-demo.mp4", // Optional
+    video: "/videos/mycalendar-demo.mp4",
   };
   
   export default myCalendarProject;

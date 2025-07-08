@@ -61,9 +61,9 @@ const serenityCoveProject = {
   
   Built by Danah Paris and Ivan (BSIT – BatStateU, ARASOF Nasugbu)
     `,
-    image: "/images/serenity-cove.jpg", // Add an actual screenshot of the system
+    image: "/images/serenity-cove.jpg", 
     github: "https://github.com/Ivanaticsss/2105_RFDS",
-    video: "/videos/serenity-cove-demo.mp4", // Optional: use if you have one
+    video: "/videos/serenity-cove-demo.mp4", 
   };
   
   export default serenityCoveProject;

@@ -50,9 +50,9 @@ const attendanceQRProject = {
   You’re welcome to explore, modify, and learn from it — just give proper credit when reusing.
   
     `,
-    image: "/images/attendance-qr.jpg", // Replace with real screenshot
+    image: "/images/attendance-qr.jpg", 
     github: "https://github.com/danahparis21/AttendanceQRCodeSystem",
-    video: "/videos/attendance-demo.mp4", // Optional if you have one
+    video: "/videos/attendance-demo.mp4", 
   };
   
   export default attendanceQRProject;

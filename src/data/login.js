@@ -53,9 +53,9 @@ const LoginProject = {
   Built with 💖 by Danah Paris
   📧 micadanah21@gmail.com · 📍 BSIT – BatStateU
     `,
-    image: "/images/login.jpg", // Replace with your actual screenshot path
+    image: "/images/login.jpg", 
     github: "https://github.com/danahparis21/react-oauth-login",
-    video: "/videos/react-oauth-login-demo.mp4", // Optional: add demo if available
+    video: "/videos/react-oauth-login-demo.mp4",
   };
   
   export default LoginProject;
