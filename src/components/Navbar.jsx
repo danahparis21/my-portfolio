@@ -42,17 +42,26 @@ function Navbar() {
         />
 
         <ul className="flex gap-6 text-white font-light text-base relative z-10">
-          {["Home", "Projects", "Contact"].map((label, idx) => (
-            <li
-              key={label}
-              ref={(el) => (navRefs.current[idx] = el)}
-              onMouseEnter={() => setHoverIndex(idx)}
-              onMouseLeave={() => setHoverIndex(null)}
-              className="px-2 py-1 transition-all cursor-pointer"
-            >
-              {label}
-            </li>
-          ))}
+          {["Home", "Projects", "Contact"].map((label, idx) => {
+            const targetId = label.toLowerCase(); // ✅ Now valid
+            return (
+              <li
+                key={label}
+                ref={(el) => (navRefs.current[idx] = el)}
+                onMouseEnter={() => setHoverIndex(idx)}
+                onMouseLeave={() => setHoverIndex(null)}
+                onClick={() => {
+                  const section = document.getElementById(targetId);
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="px-2 py-1 transition-all cursor-pointer"
+              >
+                {label}
+              </li>
+            );
+          })}
         </ul>
       </div>
 

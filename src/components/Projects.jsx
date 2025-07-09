@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect, useRef } from "react";
+import { useInView, motion } from "framer-motion";
+import { useScrollDirection } from "../hooks/useScrollDirection";
 
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -16,6 +18,10 @@ import myCalendar from "../data/myCalendar";
 const projects = [andoksProject, login, serenityCove, attendanceQr, myCalendar];
 
 const Projects = () => {
+  const sectionRef = useRef();
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const scrollDirection = useScrollDirection(); // your custom scroll hook
+
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,7 +92,6 @@ const Projects = () => {
 
     setTimeout(() => {
       if (!isTouchOrDragActive) {
-      
         setCoverflowDepth(200);
       }
     }, 300);
@@ -108,7 +113,11 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12">
+    <section
+    ref={sectionRef}
+    className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12"
+  >
+  
       {/* Gradient Bridge with Pulsing Glow */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#070918] pointer-events-none z-0 animate-gradient-pulse" />
 
@@ -159,16 +168,28 @@ const Projects = () => {
 
       {/* Header */}
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center space-y-10">
-        <div>
+
+         {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: scrollDirection === "up" ? -30 : 30 }}
+          animate={
+            isInView
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: scrollDirection === "up" ? -30 : 30 }
+          }
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-12"
+        >
           <p className="uppercase tracking-widest text-sm text-white/60 mb-2">
-            things I’ve built
+            things I've built
           </p>
-          <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 animate-fadeInUp bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+          <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
             My Projects
           </h2>
-        </div>
+        </motion.div>
 
         {/* 💡 Swiper Carousel */}
+     
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           effect={"coverflow"}
@@ -209,6 +230,7 @@ const Projects = () => {
                   : "scale-[1.08] z-20 opacity-100"
               }`}
             >
+              
               <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[520px]">
                 {index === activeIndex && (
                   <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -253,9 +275,11 @@ const Projects = () => {
                   </a>
                 </div>
               </Parallax>
+             
             </SwiperSlide>
           ))}
         </Swiper>
+      
       </div>
       <Modal
         isOpen={isModalOpen}
