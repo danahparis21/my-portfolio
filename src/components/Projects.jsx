@@ -86,7 +86,7 @@ const Projects = () => {
 
     setTimeout(() => {
       if (!isTouchOrDragActive) {
-        // Ensure no new interaction started during timeout
+      
         setCoverflowDepth(200);
       }
     }, 300);
@@ -177,24 +177,22 @@ const Projects = () => {
           slidesPerView={"auto"}
           loop={true}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-      
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-    
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          onSliderMove={handleTouchStart} 
-          onTransitionEnd={handleTouchEnd} 
+          onSliderMove={handleTouchStart}
+          onTransitionEnd={handleTouchEnd}
           // Autoplay configuration
           autoplay={{
             delay: 3500,
-            disableOnInteraction: false, 
-            pauseOnMouseEnter: true, 
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
-         
+
             depth: 20,
             modifier: 2.5,
             slideShadows: false,

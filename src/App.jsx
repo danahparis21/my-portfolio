@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
+import Contacts from "./components/Contacts";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Home />
       <TechStack />
       <Projects />
+      <Contacts />
     </div>
   );
 }
