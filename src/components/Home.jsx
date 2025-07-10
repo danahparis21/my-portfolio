@@ -74,7 +74,7 @@ function Home() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative bg-transparent pt-48 pb-48"
+      className="relative bg-transparent pt-48 pb-40"
     >
       {/* Solid Base Dark Background */}
       <div className="fixed inset-0 -z-40 bg-[#070918]" />

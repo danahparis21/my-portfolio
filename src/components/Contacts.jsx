@@ -84,7 +84,7 @@ const Contacts = () => {
               Contacts
             </h2>
             <p className="text-white/60 italic text-medium">
-              Fill out the form & we will get back to you ASAP
+              Fill out the form & we will get back to you as soon as possible.
             </p>
           </motion.div>
 
