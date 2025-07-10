@@ -1,65 +1,33 @@
 const myCalendarProject = {
-    title: "myCalendar – Web-Based Scheduling System",
-    shortDescription:
-      "A powerful and flexible event calendar system built with PHP, JS, and MySQL, supporting recurring events, drag-and-drop scheduling, and reminders.",
-  
-    description: `
-  myCalendar – Web-Based Scheduling System  
-  A powerful, flexible calendar and event manager built with PHP, HTML, CSS, and JavaScript. Features include recurring events, drag-and-drop scheduling, real-time reminders, and email notifications. Designed to help users manage tasks and stay productive through a personalized, intuitive interface.
-  
-  🧭 Overview:  
-  myCalendar is a simple yet powerful scheduling platform built for personal and administrative use. It supports role-based access (Admin & User), recurring and customizable events, email reminders, and a dynamic, user-friendly dashboard.
-  
-  🎯 Objectives:
-  - Provide a user-friendly calendar interface for event creation and tracking  
-  - Allow color-coded event customization  
-  - Support recurring event logic with flexible editing  
-  - Drag to reschedule, mark status, and delete  
-  - Send reminders via email and system notifications  
-  - Deliver extra alerts for upcoming events  
-  - Admin: manage users, post announcements, and track logs  
-  - Ensure accountability through activity tracking  
-  
-  🛠️ Tech Stack:
-  PHP · MySQL · JavaScript · HTML · CSS · Bootstrap · PHPMailer
-  
-  📌 System Features:
-  
-  🔹 User Side:
-  - Register & log in securely  
-  - Create single or recurring events  
-  - Set custom colors, times, and descriptions  
-  - Edit or cancel all/one instance of recurring events  
-  - Add system + email reminders (including 5-min alerts)  
-  - Track status: Completed, Pending, Cancelled  
-  - Export events to Excel  
-  - Drag-and-drop to reschedule  
-  
-  🔹 Admin Side:
-  - Manage user accounts and roles  
-  - Post announcements  
-  - View user events  
-  - Access audit logs for transparency  
-  - Track user actions and event changes  
-  
-  📷 Screenshots:
-  Click to view screenshots
-  
-  📊 ERD & Flow:
-  Click to view ERD and system flow diagrams
-  
-  📄 Project Documentation:
-  View the full documentation (PDF) and user manual for setup & usage details.
-  
-  📝 License:
-  This project was created for educational use.  
-  Feel free to explore and customize — just credit the authors properly.
-  
-    `,
-    image: "/images/myCalendar.png", 
-    github: "https://github.com/danahparis21/calendar_websystem",
-    video: "/videos/mycalendar-demo.mp4",
-  };
-  
-  export default myCalendarProject;
-  
+  title: "myCalendar – Web-Based Scheduling System",
+  shortDescription:
+    "A feature-rich scheduling platform with drag-and-drop events, recurring reminders, and role-based access built in PHP and JavaScript.",
+
+  description: `
+## Purpose
+This project was created to address the need for a flexible, user-friendly calendar system that helps individuals and organizations manage schedules, deadlines, and events in one centralized platform. The goal was to replace paper-based or disconnected scheduling tools with an intuitive web-based solution that supports recurring events, personalized reminders, and multi-role access. It was designed with usability and real-world application in mind, making it suitable for schools, teams, and personal productivity systems.
+
+## My Role
+I led the design and development of the front-end interface using HTML, CSS, JavaScript, and Bootstrap, and building the server-side logic using PHP and MySQL. I implemented key features like drag-and-drop scheduling using JavaScript, real-time updates, and secure user authentication. I also integrated PHPMailer for automated email reminders and created an admin dashboard to manage users, announcements, and audit logs. I handled database design, optimized queries, and ensured the system could scale to support multiple users with role-based permissions.
+
+## Key Features
+- Create single or recurring events with custom color tags  
+- Drag-and-drop scheduling with real-time updates  
+- Set email and system reminders for upcoming events  
+- Track event status: Completed, Pending, Cancelled  
+- Export event data to Excel  
+- Role-based access: Admin and User  
+- Admin dashboard for announcements, logs, and user control  
+- Audit trail to track event changes and user actions  
+
+## Tech Stack
+PHP · MySQL · JavaScript · HTML · CSS · Bootstrap · PHPMailer
+
+ `,
+
+  image: "/images/myCalendar.png",
+  github: "https://github.com/danahparis21/calendar_websystem",
+  video: "/videos/mycalendar-demo.mp4",
+};
+
+export default myCalendarProject;

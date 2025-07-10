@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { useInView, motion } from "framer-motion";
 import { useScrollDirection } from "../hooks/useScrollDirection";
 
+import { FaGithub } from "react-icons/fa"; // Import GitHub icon
+import { HiOutlineArrowRight } from "react-icons/hi"; // Import an arrow icon for "Read More"
+
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -114,10 +117,9 @@ const Projects = () => {
 
   return (
     <section
-    ref={sectionRef}
-    className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12"
-  >
-  
+      ref={sectionRef}
+      className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12"
+    >
       {/* Gradient Bridge with Pulsing Glow */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#070918] pointer-events-none z-0 animate-gradient-pulse" />
 
@@ -168,8 +170,7 @@ const Projects = () => {
 
       {/* Header */}
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center space-y-10">
-
-         {/* Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: scrollDirection === "up" ? -30 : 30 }}
           animate={
@@ -189,7 +190,7 @@ const Projects = () => {
         </motion.div>
 
         {/* 💡 Swiper Carousel */}
-     
+
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           effect={"coverflow"}
@@ -230,7 +231,6 @@ const Projects = () => {
                   : "scale-[1.08] z-20 opacity-100"
               }`}
             >
-              
               <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[520px]">
                 {index === activeIndex && (
                   <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -239,19 +239,16 @@ const Projects = () => {
                     </div>
                   </div>
                 )}
-
                 {/* 🖼 Image */}
                 <img
                   src={project.image}
                   alt={project.title}
                   className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
                 />
-
                 {/* 📝 Title */}
                 <h3 className="text-xl font-semibold mb-2 z-10 relative">
                   {project.title}
                 </h3>
-
                 {/* 📄 Short Description */}
                 <p className="text-white/70 text-sm mb-4 z-10 relative">
                   {project.shortDescription}
@@ -263,23 +260,39 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
+                    className="
+      px-4 py-1.5 text-sm font-medium
+      text-white bg-white/10 border border-white/10 rounded-md
+      transition-all duration-300
+      hover:shadow-[0_8px_20px_-5px_rgba(168,85,247,0.7)] hover:border-purple-500
+    "
                   >
-                    GitHub
+                    <span className="flex items-center gap-2">
+                      <FaGithub className="text-lg" /> {/* GitHub Icon */}
+                      GitHub
+                    </span>
                   </a>
                   <a
                     onClick={() => openModal(project)}
-                    className="cursor-pointer px-3 py-1 text-sm bg-white/10 hover:bg-white/20 border border-white/10 rounded-md transition"
+                    className="
+      cursor-pointer
+      px-4 py-1.5 text-sm font-medium
+      text-white bg-white/10 border border-white/10 rounded-md
+      transition-all duration-300
+      hover:shadow-[0_8px_20px_-5px_rgba(168,85,247,0.7)] hover:border-purple-500
+    "
                   >
-                    Read More
+                    <span className="flex items-center gap-2">
+                      Read More
+                      <HiOutlineArrowRight className="text-lg" />{" "}
+                      {/* Read More Icon */}
+                    </span>
                   </a>
                 </div>
               </Parallax>
-             
             </SwiperSlide>
           ))}
         </Swiper>
-      
       </div>
       <Modal
         isOpen={isModalOpen}

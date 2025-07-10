@@ -23,7 +23,7 @@ const andoksProject = {
     ## Tech Stack
     JavaFX · JavaMail · iText PDF · JDBC · MySQL · SHA-256
     
-    This project was developed as a capstone requirement for my BSIT degree at BatStateU ARASOF Nasugbu.
+   
     `,
     
     image: "/images/andoks.jpg",

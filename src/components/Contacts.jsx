@@ -81,7 +81,7 @@ const Contacts = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] mb-8">
-              Contacts
+              Contact Me
             </h2>
             <p className="text-white/60 italic text-medium">
               Fill out the form & we will get back to you as soon as possible.
