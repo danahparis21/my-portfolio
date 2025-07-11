@@ -87,7 +87,7 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Hardware acceleration for smoother animations */
+
 .swiper-coverflow .swiper-slide {
   transform: translate3d(0, 0, 0);
 }

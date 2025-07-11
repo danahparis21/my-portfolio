@@ -30,8 +30,8 @@ export const Parallax = ({ className = "", children }) => {
         const centerX = box.width / 2;
         const centerY = box.height / 2;
         
-        // Smoother easing and smaller rotation range
-        const rotateX = ((y - centerY) / centerY) * 3; // Reduced from 5 to 3 degrees
+      
+        const rotateX = ((y - centerY) / centerY) * 3; 
         const rotateY = ((centerX - x) / centerX) * 3;
 
         setRotate({ 

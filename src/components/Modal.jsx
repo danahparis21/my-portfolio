@@ -28,17 +28,17 @@ const Modal = ({ isOpen, onClose, project, darkMode }) => {
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-          {/* 🌌 Top-Only Purple Gradients (Bigger & More Visible) */}
+     
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            {/* Mid Left - Soft Glow */}
+      
 
-            {/* Center - Biggest & Brightest */}
+ 
             <div className="absolute top-[-180px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-b from-purple-600/80 via-purple-500/40 to-transparent opacity-50 rounded-full blur-[110px]" />
 
-            {/* Mid Right - Vibrant Pop */}
+     
             <div className="absolute top-[-100px] right-[15%] w-[380px] h-[380px] bg-gradient-to-bl from-purple-900/90 to-transparent opacity-45 rounded-full blur-[95px]" />
 
-            {/* Far Right - Subtle Edge */}
+    
             <div className="absolute top-[-130px] right-[-120px] w-[420px] h-[420px] bg-gradient-to-tl from-purple-700/60 to-transparent opacity-30 rounded-full blur-[85px]" />
           </div>
 
@@ -74,7 +74,7 @@ const Modal = ({ isOpen, onClose, project, darkMode }) => {
             </motion.h2>
           </div>
 
-          {/* Video (optional) */}
+          {/* Video */}
           {project?.video && (
             <motion.div
               className="aspect-video w-full overflow-hidden rounded-lg mb-8 bg-black/40 border border-white/10"
@@ -133,7 +133,7 @@ const Modal = ({ isOpen, onClose, project, darkMode }) => {
 
               return (
                 <>
-                  {/* ✅ Tech Stack under subtitle */}
+            
                   {techStackContent && (
                     <div className="mb-6">
                       <div
@@ -148,7 +148,7 @@ const Modal = ({ isOpen, onClose, project, darkMode }) => {
                     </div>
                   )}
 
-                  {/* ✅ Render remaining description */}
+           
                   {(() => {
                     const items = [];
                     let listBuffer = [];

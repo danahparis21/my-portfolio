@@ -67,7 +67,7 @@ function Navbar() {
           }`}
         >
           {["Home", "Projects", "Contact"].map((label, idx) => {
-            const targetId = label.toLowerCase(); // ✅ Now valid
+            const targetId = label.toLowerCase(); 
             return (
               <li
                 key={label}

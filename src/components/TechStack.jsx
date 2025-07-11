@@ -59,7 +59,7 @@ const DraggableTechIcon = ({
   const getShiftTransform = () => {
     if (isDragging) return "scale(1.05) translateX(0px)";
 
-    // Animate shift if another item is being dragged
+ 
     if (draggedItemIndex !== null && shiftDirection !== 0) {
       return `translateX(${shiftDirection * 40}px)`; // shift 40px left/right
     }
@@ -253,7 +253,7 @@ const TechStack = () => {
                   transition={{
                     duration: 0.3,
                     ease: "easeOut",
-                    delay: isInView ? index * 0.03 : 0, // Only stagger on enter
+                    delay: isInView ? index * 0.03 : 0, 
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

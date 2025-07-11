@@ -202,7 +202,7 @@ const Projects = () => {
           </h2>
         </motion.div>
 
-        {/* 💡 Swiper Carousel */}
+        {/* Swiper Carousel */}
 
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -218,7 +218,7 @@ const Projects = () => {
           onTouchEnd={handleTouchEnd}
           onSliderMove={handleTouchStart}
           onTransitionEnd={handleTouchEnd}
-          // Autoplay configuration
+    
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -266,12 +266,12 @@ const Projects = () => {
                   alt={project.title}
                   className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
                 />
-                {/* 📝 Title */}
+                {/* Title */}
                 <h3 className="text-xl font-semibold mb-2 z-10 relative">
                   {project.title}
                 </h3>
 
-                {/* 📄 Short Description */}
+                {/* Short Description */}
                 <p
                   className={`text-sm mb-4 z-10 relative transition-colors duration-300 ${
                     darkMode ? "text-white/70" : "text-black/70"
@@ -280,7 +280,7 @@ const Projects = () => {
                   {project.shortDescription}
                 </p>
 
-                {/* 🔘 Buttons */}
+                {/* Buttons */}
                 <div className="mt-auto flex gap-3 z-10 relative">
                   <a
                     href={project.github}

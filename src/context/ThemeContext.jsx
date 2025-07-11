@@ -1,11 +1,11 @@
-// src/context/ThemeContext.js
+
 import { createContext, useState, useContext, useEffect } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
-    // Optional: check local storage
+
     return localStorage.getItem("theme") === "dark";
   });
 

@@ -56,7 +56,7 @@ const Contacts = () => {
       id="contacts"
       className="relative w-full bg-transparent text-white px-6 pt-24 pb-20"
     >
-      {/* Gradient Bridge */}
+     
 
       {/* Background */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay pointer-events-none -z-30" />
@@ -75,7 +75,7 @@ const Contacts = () => {
       >
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto">
-          {/* Heading with motion */}
+    
           <motion.div
             initial={{ opacity: 0, y: scrollDirection === "up" ? -30 : 30 }}
             animate={
@@ -187,7 +187,7 @@ const Contacts = () => {
               ></textarea>
             </div>
 
-            {/* Button (keep as is) */}
+      
             <button
               type="submit"
               className="bg-[#35174a] hover:bg-[#4a1d67] text-white py-2 px-6 rounded-md transition"
