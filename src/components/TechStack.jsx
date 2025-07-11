@@ -283,8 +283,8 @@ const TechStack = () => {
       <div
         className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent ${
           darkMode ? "to-[#070918]" : "to-white"
-        } pointer-events-none z-0`}
-      />
+        } pointer-events-none z-0 transition-colors duration-700`}
+      ></div>
     </section>
   );
 };

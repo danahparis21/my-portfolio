@@ -84,7 +84,6 @@ function Home() {
       className="relative bg-transparent pt-48 pb-40"
     >
       {/* Solid Base Background */}
-  
 
       <div className="fixed inset-0 pointer-events-none z-[-20] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay" />
 
@@ -239,25 +238,25 @@ function Home() {
             {
               href: "https://www.linkedin.com/in/mica-danah-paris-374a10289/",
               icon: "fab fa-linkedin",
-              color: "hover:text-blue-500",
+              color: "hover:text-blue-500 dark:hover:text-blue-400",
               glow: "hover:shadow-blue-500/30",
             },
             {
               href: "https://www.instagram.com/danahparis_/",
               icon: "fab fa-instagram",
-              color: "hover:text-pink-400",
+              color: "hover:text-pink-400 dark:hover:text-pink-300",
               glow: "hover:shadow-pink-400/30",
             },
             {
               href: "https://github.com/danahparis21/my-portfolio",
               icon: "fab fa-github",
-              color: "hover:text-purple-300",
+              color: "hover:text-purple-300 dark:hover:text-purple-200",
               glow: "hover:shadow-purple-300/30",
             },
             {
               href: "/myResume.pdf",
               icon: "fas fa-file-alt",
-              color: "hover:text-yellow-300",
+              color: "hover:text-yellow-300 dark:hover:text-yellow-200",
               glow: "hover:shadow-yellow-300/30",
             },
           ].map((social, index) => (
@@ -273,8 +272,7 @@ function Home() {
           ))}
         </div>
       </motion.div>
-
-      </section>
+    </section>
   );
 }
 

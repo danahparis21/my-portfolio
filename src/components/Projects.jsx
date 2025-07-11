@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { useInView, motion } from "framer-motion";
 import { useScrollDirection } from "../hooks/useScrollDirection";
 
-import { FaGithub } from "react-icons/fa"; // Import GitHub icon
-import { HiOutlineArrowRight } from "react-icons/hi"; // Import an arrow icon for "Read More"
+import { FaGithub } from "react-icons/fa";
+import { HiOutlineArrowRight } from "react-icons/hi";
 
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -26,7 +26,7 @@ const Projects = () => {
 
   const sectionRef = useRef();
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const scrollDirection = useScrollDirection(); // your custom scroll hook
+  const scrollDirection = useScrollDirection();
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -103,7 +103,6 @@ const Projects = () => {
     }, 300);
   };
 
-  // Handle auto-play starting/stopping
   const handleAutoplayStart = () => {
     if (!isTouchOrDragActive) {
       setCoverflowDepth(120);
@@ -126,8 +125,8 @@ const Projects = () => {
       <div
         className={`absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent ${
           darkMode ? "to-[#070918]" : "to-white"
-        } pointer-events-none z-0 animate-gradient-pulse transition-colors duration-700`}
-      />
+        } pointer-events-none z-0 transition-colors duration-700`}
+      ></div>
 
       {/* Shooting Star with Saturated Glow */}
       <div className="absolute top-[5vh] left-1/2 -translate-x-1/2 z-[-10] scale-[2.5] origin-center pointer-events-none animate-shooting">
@@ -323,12 +322,11 @@ const Projects = () => {
         </Swiper>
       </div>
       <Modal
-  isOpen={isModalOpen}
-  onClose={closeModal}
-  project={selectedProject}
-  darkMode={darkMode} // ✅ Pass theme state
-/>
-
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        project={selectedProject}
+        darkMode={darkMode}
+      />
     </section>
   );
 };

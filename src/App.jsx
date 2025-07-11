@@ -20,14 +20,22 @@ function App() {
         }`}
       />
 
+  
+
       {/* 💡 Scrollable App Content */}
-      <div className="relative bg-transparent text-neutral-800 dark:text-white font-sans scrollbar-thin scrollbar-thumb-[#35174a] scrollbar-track-white dark:scrollbar-track-[#070918] overflow-y-scroll overflow-x-hidden h-screen scroll-smooth">
+      <div
+        className="relative bg-transparent text-neutral-800 dark:text-white font-sans overflow-y-scroll overflow-x-hidden h-screen scroll-smooth
+        [&::-webkit-scrollbar]:hidden
+        [-ms-overflow-style:'none']
+        [scrollbar-width:'none']"
+      >
         <Navbar />
         <section id="home">
           <Home />
         </section>
         <TechStack />
         <section id="projects">
+          
           <Projects />
         </section>
         <section id="contact">
