@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext"; // ✅
 
 function Navbar() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { darkMode, setDarkMode } = useTheme();
+
   const [hoverIndex, setHoverIndex] = useState(null);
   const navRefs = useRef([]);
 
@@ -15,33 +17,55 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[40%] max-w-5xl h-12 bg-white/10 dark:bg-white/10 backdrop-blur-lg border border-white/20 px-10 rounded-full flex items-center justify-between shadow-md z-50 font-sans">
-      {/* Left: Name */}
-      <div className="text-lg font-bold text-white tracking-wide">
+    <nav
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 w-[40%] max-w-5xl h-12
+    backdrop-blur-lg px-10 rounded-full flex items-center justify-between shadow-md z-50 font-sans
+    transition-colors duration-300
+    ${
+      darkMode
+        ? "bg-white/10 border border-white/20 text-white"
+        : "bg-white/80 border border-black/20 text-black"
+    }`}
+    >
+      <div
+        className={`text-lg font-bold tracking-wide transition-colors duration-300 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
         Danah Paris
       </div>
 
       {/* Center: Nav Links */}
       <div className="relative flex items-center justify-center">
-        {/* Hover Glass - Only for nav items (index 0-2) */}
         <div
-          className="absolute top-1/2 left-0 h-8 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 transition-all duration-300 ease-in-out -translate-y-1/2 shadow-[0_0_12px_rgba(255,255,255,0.1)] scale-105"
+          className={`absolute top-1/2 left-0 h-10 rounded-full 
+    backdrop-blur-[6px] transition-all duration-300 ease-in-out 
+    -translate-y-1/2 scale-110
+    ${
+      darkMode
+        ? "bg-white/10 border border-white/20 shadow-[0_0_12px_rgba(255,255,255,0.1)]"
+        : "bg-white/30 border border-black/20 shadow-[0_0_24px_rgba(255,255,255,0.4)]"
+    }`}
           style={{
             width:
               hoverIndex !== null && hoverIndex < 3
-                ? `${navRefs.current[hoverIndex]?.offsetWidth + 16}px`
+                ? `${navRefs.current[hoverIndex]?.offsetWidth + 24}px`
                 : 0,
             transform:
               hoverIndex !== null && hoverIndex < 3
                 ? `translateY(-50%) translateX(${
-                    navRefs.current[hoverIndex]?.offsetLeft - 8
+                    navRefs.current[hoverIndex]?.offsetLeft - 12
                   }px)`
                 : "translateY(-50%) translateX(0)",
             opacity: hoverIndex !== null && hoverIndex < 3 ? 1 : 0,
           }}
         />
 
-        <ul className="flex gap-6 text-white font-light text-base relative z-10">
+        <ul
+          className={`flex gap-6 font-light text-base relative z-10 transition-colors duration-300 ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
           {["Home", "Projects", "Contact"].map((label, idx) => {
             const targetId = label.toLowerCase(); // ✅ Now valid
             return (
@@ -68,9 +92,10 @@ function Navbar() {
       {/* Right: Theme Toggle */}
       <div className="relative">
         <button
-          onMouseEnter={() => setHoverIndex(null)} // Explicitly set to null
           onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-full bg-transparent text-white/80 text-xl transition-all duration-300 hover:text-white hover:bg-white/10 hover:scale-110"
+          className="p-2 rounded-full text-xl transition-all duration-300
+        hover:scale-110 text-neutral-800 dark:text-white
+        hover:bg-neutral-200 dark:hover:bg-white/10"
         >
           {darkMode ? <FaSun /> : <FaMoon />}
         </button>

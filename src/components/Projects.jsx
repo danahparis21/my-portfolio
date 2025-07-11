@@ -17,10 +17,13 @@ import login from "../data/login";
 import serenityCove from "../data/serenityCove";
 import attendanceQr from "../data/attendanceQr";
 import myCalendar from "../data/myCalendar";
+import { useTheme } from "../context/ThemeContext";
 
 const projects = [andoksProject, login, serenityCove, attendanceQr, myCalendar];
 
 const Projects = () => {
+  const { darkMode } = useTheme();
+
   const sectionRef = useRef();
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const scrollDirection = useScrollDirection(); // your custom scroll hook
@@ -120,8 +123,11 @@ const Projects = () => {
       ref={sectionRef}
       className="relative w-full min-h-[90vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12"
     >
-      {/* Gradient Bridge with Pulsing Glow */}
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent to-[#070918] pointer-events-none z-0 animate-gradient-pulse" />
+      <div
+        className={`absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-transparent ${
+          darkMode ? "to-[#070918]" : "to-white"
+        } pointer-events-none z-0 animate-gradient-pulse transition-colors duration-700`}
+      />
 
       {/* Shooting Star with Saturated Glow */}
       <div className="absolute top-[5vh] left-1/2 -translate-x-1/2 z-[-10] scale-[2.5] origin-center pointer-events-none animate-shooting">
@@ -164,9 +170,6 @@ const Projects = () => {
       </div>
 
       {/* Background layers */}
-      <div className="absolute inset-0 bg-[#070918] -z-40" />
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay pointer-events-none -z-30" />
-      <div className="absolute inset-0 bg-holo bg-[length:300%_300%] opacity-20 blur-xl mix-blend-soft-light pointer-events-none -z-20" />
 
       {/* Header */}
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center space-y-10">
@@ -181,10 +184,21 @@ const Projects = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <p className="uppercase tracking-widest text-sm text-white/60 mb-2">
+          <p
+            className={`uppercase tracking-widest text-sm mb-2 transition-colors duration-300 ${
+              darkMode ? "text-white/60" : "text-black/50"
+            }`}
+          >
             things I've built
           </p>
-          <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+
+          <h2
+            className={`text-4xl md:text-5xl font-medium leading-snug pb-2 transition-all duration-300 ${
+              darkMode
+                ? "bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
+                : "text-black"
+            }`}
+          >
             My Projects
           </h2>
         </motion.div>
@@ -231,7 +245,15 @@ const Projects = () => {
                   : "scale-[1.08] z-20 opacity-100"
               }`}
             >
-              <Parallax className="relative group bg-white/5 border border-white/10 rounded-xl backdrop-blur-md p-6 transition hover:border-white/20 flex flex-col justify-between h-[480px] md:h-[520px]">
+              <Parallax
+                className={`relative group rounded-xl p-6 transition flex flex-col justify-between h-[480px] md:h-[520px] backdrop-blur-md border
+    ${
+      darkMode
+        ? "bg-white/5 border-white/10 hover:border-white/20 text-white"
+        : "bg-gray-200/40 border-black/10 hover:border-black/30 text-black"
+    }
+  `}
+              >
                 {index === activeIndex && (
                   <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                     <div className="absolute inset-0 w-full h-full [transform:skewX(-20deg)_translateX(-100%)] animate-[shimmer_1.2s_ease-out_300ms_forwards]">
@@ -249,8 +271,13 @@ const Projects = () => {
                 <h3 className="text-xl font-semibold mb-2 z-10 relative">
                   {project.title}
                 </h3>
+
                 {/* 📄 Short Description */}
-                <p className="text-white/70 text-sm mb-4 z-10 relative">
+                <p
+                  className={`text-sm mb-4 z-10 relative transition-colors duration-300 ${
+                    darkMode ? "text-white/70" : "text-black/70"
+                  }`}
+                >
                   {project.shortDescription}
                 </p>
 
@@ -260,12 +287,13 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-      px-4 py-1.5 text-sm font-medium
-      text-white bg-white/10 border border-white/10 rounded-md
-      transition-all duration-300
-      hover:shadow-[0_8px_20px_-5px_rgba(168,85,247,0.7)] hover:border-purple-500
-    "
+                    className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-300 border bg-white/10
+                      ${
+                        darkMode
+                          ? "text-white border-white/10 hover:border-purple-500"
+                          : "text-black border-black/20 hover:border-purple-500"
+                      }
+                    `}
                   >
                     <span className="flex items-center gap-2">
                       <FaGithub className="text-lg" /> {/* GitHub Icon */}
@@ -274,13 +302,13 @@ const Projects = () => {
                   </a>
                   <a
                     onClick={() => openModal(project)}
-                    className="
-      cursor-pointer
-      px-4 py-1.5 text-sm font-medium
-      text-white bg-white/10 border border-white/10 rounded-md
-      transition-all duration-300
-      hover:shadow-[0_8px_20px_-5px_rgba(168,85,247,0.7)] hover:border-purple-500
-    "
+                    className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all duration-300 border bg-white/10
+                      ${
+                        darkMode
+                          ? "text-white border-white/10 hover:border-purple-500"
+                          : "text-black border-black/20 hover:border-purple-500"
+                      }
+                    `}
                   >
                     <span className="flex items-center gap-2">
                       Read More
@@ -295,10 +323,12 @@ const Projects = () => {
         </Swiper>
       </div>
       <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        project={selectedProject}
-      />
+  isOpen={isModalOpen}
+  onClose={closeModal}
+  project={selectedProject}
+  darkMode={darkMode} // ✅ Pass theme state
+/>
+
     </section>
   );
 };

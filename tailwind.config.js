@@ -4,6 +4,7 @@ export default {
 
   theme: {
     extend: {
+ 
       backgroundImage: {
         holo: `linear-gradient(
           135deg,
@@ -149,6 +150,13 @@ export default {
             transform: "skewX(-20deg) translateX(200%)",
           },
         },
+
+        fadeBg: {
+          '0%': { backgroundColor: '#ffffff' },
+          '100%': { backgroundColor: '#070918' },
+        },
+      
+    
       },
       animation: {
         holoMove: "holoMove 300s ease-in-out infinite",
@@ -168,6 +176,8 @@ export default {
         "slow-expand": "slow-expand 30s linear infinite",
 
         shimmer: "shimmer 1.2s ease-out forwards",
+
+
       },
       fontFamily: {
         sans: ['"Open Sans"', "sans-serif"],

@@ -3,14 +3,15 @@ import profilePic from "../assets/profile.jpg";
 import { motion, useInView } from "framer-motion";
 import { useScrollDirection } from "../hooks/useScrollDirection";
 import { useScroll, useTransform } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 const GlowText = ({ text, glowRadius = 2 }) => {
+  const { darkMode } = useTheme();
   const [hoveredLetter, setHoveredLetter] = useState(null);
   const textRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!textRef.current) return;
-
     const letters = textRef.current.querySelectorAll("span");
     const { left } = textRef.current.getBoundingClientRect();
     const mouseX = e.clientX - left;
@@ -19,7 +20,6 @@ const GlowText = ({ text, glowRadius = 2 }) => {
       Math.floor(mouseX / letterWidth),
       text.length - 1
     );
-
     setHoveredLetter(hoveredIndex);
   };
 
@@ -30,9 +30,14 @@ const GlowText = ({ text, glowRadius = 2 }) => {
   return (
     <div
       ref={textRef}
-      className="relative inline-block bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      className={`relative inline-block transition-all duration-700 ease-out
+        ${
+          darkMode
+            ? "bg-gradient-to-r from-glow4 via-white to-glow1 bg-clip-text text-transparent"
+            : "text-black"
+        }`}
     >
       {text.split("").map((letter, index) => {
         const isGlowing =
@@ -59,6 +64,8 @@ const GlowText = ({ text, glowRadius = 2 }) => {
 };
 
 function Home() {
+  const { darkMode } = useTheme();
+
   const handleContactClick = () => {
     window.open(
       "https://mail.google.com/mail/?view=cm&to=micadanah21@gmail.com",
@@ -76,8 +83,8 @@ function Home() {
       ref={sectionRef}
       className="relative bg-transparent pt-48 pb-40"
     >
-      {/* Solid Base Dark Background */}
-      <div className="fixed inset-0 -z-40 bg-[#070918]" />
+      {/* Solid Base Background */}
+  
 
       <div className="fixed inset-0 pointer-events-none z-[-20] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay" />
 
@@ -93,10 +100,6 @@ function Home() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,...')] opacity-5 z-[-10] mix-blend-overlay pointer-events-none" />
 
       {/* MORE DECORATIONS */}
-      {/* Dark */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full blur-[80px] z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-purple-900/60 rounded-full mix-blend-multiply" />
-      </div>
 
       {/*  Strong Left Spotlight */}
       <div className="absolute top-[-150px] left-[-200px] w-[800px] h-[400px] blur-[150px] opacity-90 z-10 overflow-hidden">
@@ -169,7 +172,11 @@ function Home() {
             <h2 className="text-5xl font-bold ">
               <GlowText text="Danah Paris" />
             </h2>
-            <div className="text-white/80 text-xl flex items-center justify-center md:justify-start mt-1">
+            <div
+              className={`${
+                darkMode ? "text-white/80" : "text-neutral-700"
+              } text-xl flex items-center justify-center ...`}
+            >
               <GlowText text="Based in Philippines" />
               <img
                 src="https://flagcdn.com/ph.svg"
@@ -203,7 +210,11 @@ function Home() {
             </h2>
             <button
               onClick={handleContactClick}
-              className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:scale-105 transition-all duration-300 text-xl hover:shadow-glow4/50 hover:text-glow5 relative overflow-hidden group flex items-center gap-3"
+              className="px-8 py-3 bg-white/10 backdrop-blur-md 
+             border border-black/30 dark:border-white/20 
+             rounded-full hover:scale-105 transition-all duration-300 
+             text-xl hover:shadow-glow4/50 hover:text-glow5 
+             relative overflow-hidden group flex items-center gap-3"
             >
               <i className="fas fa-paper-plane relative z-10"></i>
               <span className="relative z-10">Contact Me</span>
@@ -255,7 +266,7 @@ function Home() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-white ${social.color} transition-all duration-500 hover:scale-110 ${social.glow} p-2 rounded-full`}
+              className={`text-black dark:text-white ${social.color} transition-all duration-500 hover:scale-110 ${social.glow} p-2 rounded-full`}
             >
               <i className={social.icon}></i>
             </a>
@@ -263,8 +274,7 @@ function Home() {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-b from-transparent to-[#070918] z-10 pointer-events-none" />
-    </section>
+      </section>
   );
 }
 

@@ -3,7 +3,8 @@ import GlowCircles from "./GlowCircles";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useInView, motion } from "framer-motion";
-import { useScrollDirection } from "../hooks/useScrollDirection"; 
+import { useScrollDirection } from "../hooks/useScrollDirection";
+import { useTheme } from "../context/ThemeContext";
 
 const techIcons = [
   { icon: "devicon-java-plain", label: "Java", glow: "#f89820" },
@@ -37,6 +38,7 @@ const DraggableTechIcon = ({
       isDragging: monitor.isDragging(),
     }),
   });
+  const { darkMode } = useTheme();
 
   const [{ isOver }, drop] = useDrop({
     accept: "TECH_ICON",
@@ -79,9 +81,14 @@ const DraggableTechIcon = ({
           setFadingIndex(null);
         }, 10000);
       }}
-      className={`group relative flex flex-col items-center text-6xl p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md transition-all duration-300 hover:border-white/20 overflow-visible ${
-        isDragging ? "opacity-50 z-50" : "opacity-100 z-10"
-      }`}
+      className={`group relative flex flex-col items-center text-6xl p-6 rounded-xl 
+        border transition-all duration-300 overflow-visible shadow-md backdrop-blur-md
+        ${
+          darkMode
+            ? "bg-white/5 border-white/10 hover:border-white/20 text-white"
+            : " border-black/20 hover:border-black/40 text-black"
+        } 
+        ${isDragging ? "opacity-50 z-50" : "opacity-100 z-10"}`}
       style={{
         cursor: "default",
 
@@ -113,7 +120,7 @@ const DraggableTechIcon = ({
       {/* Icon */}
       <span
         className={`relative z-10 transition-colors duration-300 ${
-          hoveredIndex === index ? "text-[inherit]" : "text-white"
+          hoveredIndex === index ? "" : darkMode ? "text-white" : "text-black"
         }`}
         style={hoveredIndex === index ? { color: glow } : {}}
       >
@@ -121,7 +128,13 @@ const DraggableTechIcon = ({
       </span>
 
       {/* Label */}
-      <p className="mt-3 text-sm text-white/60 group-hover:text-white/80 uppercase tracking-widest relative z-10 transition-colors duration-300">
+      <p
+        className={`mt-3 text-sm uppercase tracking-widest relative z-10 transition-colors duration-300 ${
+          darkMode
+            ? "text-white/60 group-hover:text-white/80"
+            : "text-black/60 group-hover:text-black"
+        }`}
+      >
         {label}
       </p>
     </div>
@@ -129,6 +142,8 @@ const DraggableTechIcon = ({
 };
 
 const TechStack = () => {
+  const { darkMode } = useTheme();
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [fadingIndex, setFadingIndex] = useState(null);
   const [techItems, setTechItems] = useState(techIcons);
@@ -162,9 +177,6 @@ const TechStack = () => {
       className="relative w-full min-h-[70vh] overflow-hidden z-10 text-white px-6 pt-6 pb-12"
     >
       {/* Background layers */}
-      <div className="absolute inset-0 bg-[#070918] -z-40" />
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-5 mix-blend-overlay pointer-events-none -z-30" />
-      <div className="absolute inset-0 bg-holo bg-[length:300%_300%] opacity-20 blur-xl mix-blend-soft-light pointer-events-none -z-20" />
 
       {/* Glowing circles */}
       <GlowCircles />
@@ -173,7 +185,7 @@ const TechStack = () => {
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center space-y-10">
         {/* Title */}
         <motion.div
-          key={`title-${isInView}-${scrollDirection}`} 
+          key={`title-${isInView}-${scrollDirection}`}
           initial={{
             opacity: 0,
             y: scrollDirection === "down" ? 30 : -30,
@@ -184,10 +196,21 @@ const TechStack = () => {
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="uppercase tracking-widest text-sm text-white/60 mb-2">
+          <p
+            className={`uppercase tracking-widest text-sm mb-2 transition-colors duration-300 ${
+              darkMode ? "text-white/60" : "text-black/60"
+            }`}
+          >
             my tools & languages
           </p>
-          <h2 className="text-4xl md:text-5xl font-medium leading-snug pb-2 bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+
+          <h2
+            className={`text-4xl md:text-5xl font-medium leading-snug pb-2 transition-all duration-300 ${
+              darkMode
+                ? "bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
+                : "text-black"
+            }`}
+          >
             Tech Stack
           </h2>
         </motion.div>
@@ -196,7 +219,7 @@ const TechStack = () => {
         <DndProvider backend={HTML5Backend}>
           <motion.div
             className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 mt-8"
-            key={`grid-${isInView}-${scrollDirection}`} 
+            key={`grid-${isInView}-${scrollDirection}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             transition={{ duration: 0.5 }}
@@ -216,7 +239,7 @@ const TechStack = () => {
 
               return (
                 <motion.div
-                  key={`icon-${index}-${isInView}-${scrollDirection}`} 
+                  key={`icon-${index}-${isInView}-${scrollDirection}`}
                   initial={{
                     opacity: 0,
                     y: scrollDirection === "down" ? 20 : -20,
@@ -257,8 +280,11 @@ const TechStack = () => {
         </DndProvider>
       </div>
 
-      {/* Gradient Bridge to Projects */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#070918] pointer-events-none z-0" />
+      <div
+        className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent ${
+          darkMode ? "to-[#070918]" : "to-white"
+        } pointer-events-none z-0`}
+      />
     </section>
   );
 };

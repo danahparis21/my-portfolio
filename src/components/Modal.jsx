@@ -1,33 +1,37 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
-
-const Modal = ({ isOpen, onClose, project }) => {
+import { useTheme } from "../context/ThemeContext";
+const Modal = ({ isOpen, onClose, project, darkMode }) => {
   if (!isOpen) return null;
 
   return createPortal(
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      >
-        {/* 🧾 Modal Content */}
+      {isOpen && (
         <motion.div
-          className="relative z-10 bg-[#0e0e14] text-white rounded-xl p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide border border-white/10 shadow-xl"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          onClick={(e) => e.stopPropagation()}
+          className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
         >
+          <motion.div
+            onClick={(e) => e.stopPropagation()}
+            className={`relative z-10 rounded-xl p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide border shadow-xl
+            transition-colors duration-300 ${
+              darkMode
+                ? "bg-[#0e0e14] text-white border-white/10"
+                : "bg-[#f5f3ff] text-black border-black/10"
+            }`}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
           {/* 🌌 Top-Only Purple Gradients (Bigger & More Visible) */}
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          
             {/* Mid Left - Soft Glow */}
-          
+
             {/* Center - Biggest & Brightest */}
             <div className="absolute top-[-180px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-b from-purple-600/80 via-purple-500/40 to-transparent opacity-50 rounded-full blur-[110px]" />
 
@@ -42,7 +46,13 @@ const Modal = ({ isOpen, onClose, project }) => {
           <div className="sticky top-0 z-20 flex justify-end">
             <button
               onClick={onClose}
-              className="text-white/60 hover:text-white text-4xl transition-transform transform hover:scale-110 p-2 rounded-bl-xl bg-[#0e0e14]"
+              className={`text-4xl transition-transform transform hover:scale-110 p-2 rounded-bl-xl
+    ${
+      darkMode
+        ? "text-white/60 hover:text-white bg-[#0e0e14]"
+        : "text-black/60 hover:text-black bg-[#f5f3ff]"
+    }
+  `}
             >
               &times;
             </button>
@@ -51,7 +61,11 @@ const Modal = ({ isOpen, onClose, project }) => {
           {/* Title */}
           <div className="text-center mb-8">
             <motion.h2
-              className="text-4xl font-bold bg-gradient-to-r from-white via-white/80 to-purple-400 bg-clip-text text-transparent mb-3"
+              className={`text-4xl font-bold mb-3 ${
+                darkMode
+                  ? "bg-gradient-to-r from-white via-white/80 to-purple-400 bg-clip-text text-transparent"
+                  : "text-black"
+              }`}
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 }}
@@ -79,7 +93,9 @@ const Modal = ({ isOpen, onClose, project }) => {
           {/* Subtitle */}
           {project?.subtitle && (
             <motion.p
-              className="text-lg text-white/80 max-w-2xl mx-auto mb-8 text-center"
+              className={`text-lg max-w-2xl mx-auto mb-8 text-center ${
+                darkMode ? "text-white/80" : "text-black/70"
+              }`}
               initial={{ y: -5, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -90,7 +106,9 @@ const Modal = ({ isOpen, onClose, project }) => {
 
           {/* Project Details Sections */}
           <motion.div
-            className="text-white/80 space-y-6 text-base leading-relaxed"
+            className={`space-y-6 text-base leading-relaxed ${
+              darkMode ? "text-white/80" : "text-black/80"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -118,7 +136,13 @@ const Modal = ({ isOpen, onClose, project }) => {
                   {/* ✅ Tech Stack under subtitle */}
                   {techStackContent && (
                     <div className="mb-6">
-                      <div className="bg-white/10 border border-white/20 rounded-md p-4 text-sm text-white font-mono overflow-x-auto">
+                      <div
+                        className={`rounded-md p-4 text-sm font-mono overflow-x-auto ${
+                          darkMode
+                            ? "bg-white/10 border border-white/20 text-white"
+                            : "bg-[#ede9fe] border border-black/10 text-black"
+                        }`}
+                      >
                         {techStackContent}
                       </div>
                     </div>
@@ -152,7 +176,11 @@ const Modal = ({ isOpen, onClose, project }) => {
                           items.push(
                             <h3
                               key={`h3-${i}`}
-                              className="text-xl font-semibold text-white pt-6 pb-2 border-b border-white/10"
+                              className={`text-xl font-semibold pt-6 pb-2 border-b ${
+                                darkMode
+                                  ? "text-white border-white/10"
+                                  : "text-black border-black/10"
+                              }`}
                             >
                               {line.replace("## ", "")}
                             </h3>
@@ -161,7 +189,9 @@ const Modal = ({ isOpen, onClose, project }) => {
                           items.push(
                             <p
                               key={`p-${i}`}
-                              className="whitespace-pre-line mb-4"
+                              className={`whitespace-pre-line mb-4 ${
+                                darkMode ? "text-white/80" : "text-black/80"
+                              }`}
                             >
                               {line}
                             </p>
@@ -186,6 +216,7 @@ const Modal = ({ isOpen, onClose, project }) => {
           </motion.div>
         </motion.div>
       </motion.div>
+      )}
     </AnimatePresence>,
     document.getElementById("modal-root")
   );
