@@ -100,8 +100,15 @@ function Home() {
 
       {/* MORE DECORATIONS */}
 
-      {/*  Strong Left Spotlight */}
-      <div className="absolute top-[-150px] left-[-200px] w-[800px] h-[400px] blur-[150px] opacity-90 z-10 overflow-hidden">
+      {/* Strong Left Spotlight */}
+      <div
+        className="
+  absolute top-[-150px] left-[-200px]
+  w-[400px] h-[200px] sm:w-[600px] sm:h-[300px] md:w-[800px] md:h-[400px]
+  blur-[100px] sm:blur-[120px] md:blur-[150px]
+  opacity-90 z-10 overflow-hidden
+"
+      >
         <div
           className="absolute inset-0 bg-gradient-to-r from-glow2 via-pink-400 to-transparent animate-pulseSlow mix-blend-lighten"
           style={{ clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)" }}
@@ -160,7 +167,7 @@ function Home() {
         className="flex flex-col md:flex-row items-center justify-center px-4 text-white gap-4"
       >
         {/* HOME CONTENT */}
-        {/* Top Row: Profile Picture + Name + Location */}
+
         <div className="flex flex-col md:flex-row items-center justify-center px-4 text-white gap-4 animate-fadeInUp">
           <img
             src={profilePic}
@@ -168,9 +175,10 @@ function Home() {
             className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover shadow-lg border-4 border-white/20 hover:shadow-glow3/50 transition-all duration-500"
           />
           <div className="text-center md:text-left">
-            <h2 className="text-5xl font-bold ">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               <GlowText text="Danah Paris" />
             </h2>
+
             <div
               className={`${
                 darkMode ? "text-white/80" : "text-neutral-700"
@@ -199,25 +207,29 @@ function Home() {
       >
         {/* SOFTWARE + ENGINEER + BUTTON */}
         <div className="text-center mt-2 animate-fadeInUp">
-          <h1 className="text-7xl font-extrabold tracking-wide leading-none bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+          {/* SOFTWARE */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide leading-none bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
             <GlowText text="SOFTWARE" />
           </h1>
 
-          <div className="flex justify-center items-center gap-6 mt-1">
-            <h2 className="text-5xl font-extrabold tracking-wide leading-none bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-              <GlowText text="ENGINEER" />
-            </h2>
+          {/* ENGINEER */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide leading-none bg-gradient-to-r from-gray-400 via-white to-gray-400 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] mt-1">
+            <GlowText text="ENGINEER" />
+          </h2>
+
+          {/* CONTACT ME BUTTON */}
+          <div className="mt-4 flex justify-center">
             <button
               onClick={handleContactClick}
-              className="px-8 py-3 bg-white/10 backdrop-blur-md 
-             border border-black/30 dark:border-white/20 
-             rounded-full hover:scale-105 transition-all duration-300 
-             text-xl hover:shadow-glow4/50 hover:text-glow5 
-             relative overflow-hidden group flex items-center gap-3"
+              className="w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] xl:w-[25%] 2xl:w-[20%] 
+              px-6 py-3 bg-white/10 backdrop-blur-md 
+              border border-black/30 dark:border-white/20 
+              rounded-full hover:scale-105 transition-all duration-300 
+              text-base sm:text-lg md:text-xl hover:shadow-glow4/50 hover:text-glow5 
+              relative overflow-hidden group flex items-center justify-center gap-3"
             >
               <i className="fas fa-paper-plane relative z-10"></i>
               <span className="relative z-10">Contact Me</span>
-
               <span className="absolute inset-0 bg-gradient-to-r from-glow2/30 to-glow3/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
             </button>
           </div>
@@ -233,7 +245,7 @@ function Home() {
         className="flex justify-center gap-10 mt-4 text-4xl"
       >
         {/* Social Icons */}
-        <div className="flex justify-center gap-10 mt-4 text-4xl animate-fadeInUp">
+        <div className="text-3xl sm:text-3xl md:text-4xl flex justify-center gap-10 mt-4 animate-fadeInUp">
           {[
             {
               href: "https://www.linkedin.com/in/mica-danah-paris-374a10289/",

@@ -181,10 +181,10 @@ const Projects = () => {
               : { opacity: 0, y: scrollDirection === "up" ? -30 : 30 }
           }
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10"
         >
           <p
-            className={`uppercase tracking-widest text-sm mb-2 transition-colors duration-300 ${
+            className={`uppercase tracking-widest text-xs sm:text-sm mb-2 transition-colors duration-300 ${
               darkMode ? "text-white/60" : "text-black/50"
             }`}
           >
@@ -192,7 +192,7 @@ const Projects = () => {
           </p>
 
           <h2
-            className={`text-4xl md:text-5xl font-medium leading-snug pb-2 transition-all duration-300 ${
+            className={`text-3xl sm:text-4xl md:text-5xl font-medium leading-snug transition-all duration-300 ${
               darkMode
                 ? "bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
                 : "text-black"
@@ -218,7 +218,6 @@ const Projects = () => {
           onTouchEnd={handleTouchEnd}
           onSliderMove={handleTouchStart}
           onTransitionEnd={handleTouchEnd}
-    
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -267,7 +266,7 @@ const Projects = () => {
                   className="rounded-lg mb-4 object-cover h-52 w-full z-10 relative"
                 />
                 {/* Title */}
-                <h3 className="text-xl font-semibold mb-2 z-10 relative">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 z-10 relative">
                   {project.title}
                 </h3>
 
@@ -281,7 +280,7 @@ const Projects = () => {
                 </p>
 
                 {/* Buttons */}
-                <div className="mt-auto flex gap-3 z-10 relative">
+                <div className="mt-auto flex flex-wrap sm:flex-nowrap gap-2 sm:gap-3 z-10 relative">
                   <a
                     href={project.github}
                     target="_blank"

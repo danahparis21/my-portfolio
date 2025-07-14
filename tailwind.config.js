@@ -4,7 +4,6 @@ export default {
 
   theme: {
     extend: {
- 
       backgroundImage: {
         holo: `linear-gradient(
           135deg,
@@ -152,11 +151,9 @@ export default {
         },
 
         fadeBg: {
-          '0%': { backgroundColor: '#ffffff' },
-          '100%': { backgroundColor: '#070918' },
+          "0%": { backgroundColor: "#ffffff" },
+          "100%": { backgroundColor: "#070918" },
         },
-      
-    
       },
       animation: {
         holoMove: "holoMove 300s ease-in-out infinite",
@@ -169,15 +166,14 @@ export default {
         pulse: "pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         pulseSlow: "pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite",
 
-        "slow-explode": "slow-explode 20s cubic-bezier(0.2, 0.8, 0.4, 1) infinite",
+        "slow-explode":
+          "slow-explode 20s cubic-bezier(0.2, 0.8, 0.4, 1) infinite",
         "slow-throb": "slow-throb 20s ease-in-out infinite",
         "slow-flash": "slow-flash 25s ease-in-out infinite",
         "slow-dance": "slow-dance 20s ease-in-out infinite",
         "slow-expand": "slow-expand 30s linear infinite",
 
         shimmer: "shimmer 1.2s ease-out forwards",
-
-
       },
       fontFamily: {
         sans: ['"Open Sans"', "sans-serif"],
@@ -189,6 +185,9 @@ export default {
         glow3: "#c056b5",
         glow4: "#fbf1fe",
         glow5: "#ffffce",
+      },
+      screens: {
+        "custom-xl": "1201px", 
       },
     },
   },

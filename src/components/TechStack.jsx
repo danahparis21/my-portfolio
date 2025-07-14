@@ -16,7 +16,7 @@ const techIcons = [
   { icon: "devicon-php-plain", label: "PHP", glow: "#8892BF" },
   { icon: "devicon-html5-plain", label: "HTML5", glow: "#e44d26" },
   { icon: "devicon-css3-plain", label: "CSS3", glow: "#264de4" },
-  { icon: "devicon-tailwindcss-plain", label: "Tailwind CSS", glow: "#38bdf8" },
+  { icon: "devicon-tailwindcss-plain", label: "Tailwind", glow: "#38bdf8" },
 ];
 
 const DraggableTechIcon = ({
@@ -59,7 +59,6 @@ const DraggableTechIcon = ({
   const getShiftTransform = () => {
     if (isDragging) return "scale(1.05) translateX(0px)";
 
- 
     if (draggedItemIndex !== null && shiftDirection !== 0) {
       return `translateX(${shiftDirection * 40}px)`; // shift 40px left/right
     }
@@ -119,9 +118,9 @@ const DraggableTechIcon = ({
 
       {/* Icon */}
       <span
-        className={`relative z-10 transition-colors duration-300 ${
-          hoveredIndex === index ? "" : darkMode ? "text-white" : "text-black"
-        }`}
+        className={`relative z-10 transition-colors duration-300 
+    text-2xl sm:text-3xl md:text-4xl 
+    ${hoveredIndex === index ? "" : darkMode ? "text-white" : "text-black"}`}
         style={hoveredIndex === index ? { color: glow } : {}}
       >
         <i className={icon}></i>
@@ -129,11 +128,12 @@ const DraggableTechIcon = ({
 
       {/* Label */}
       <p
-        className={`mt-3 text-sm uppercase tracking-widest relative z-10 transition-colors duration-300 ${
-          darkMode
-            ? "text-white/60 group-hover:text-white/80"
-            : "text-black/60 group-hover:text-black"
-        }`}
+        className={`mt-1 text-[0.50rem] sm:text-sm uppercase tracking-widest relative z-10 transition-colors duration-300 whitespace-nowrap
+    ${
+      darkMode
+        ? "text-white/60 group-hover:text-white/80"
+        : "text-black/60 group-hover:text-black"
+    }`}
       >
         {label}
       </p>
@@ -197,7 +197,7 @@ const TechStack = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p
-            className={`uppercase tracking-widest text-sm mb-2 transition-colors duration-300 ${
+            className={`uppercase tracking-widest text-xs mb-2 transition-colors duration-300 ${
               darkMode ? "text-white/60" : "text-black/60"
             }`}
           >
@@ -205,7 +205,7 @@ const TechStack = () => {
           </p>
 
           <h2
-            className={`text-4xl md:text-5xl font-medium leading-snug pb-2 transition-all duration-300 ${
+            className={`text-3xl md:text-5xl font-medium leading-snug pb-2 transition-all duration-300 ${
               darkMode
                 ? "bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
                 : "text-black"
@@ -218,7 +218,7 @@ const TechStack = () => {
         {/* Grid */}
         <DndProvider backend={HTML5Backend}>
           <motion.div
-            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 mt-8"
+            className="grid grid-cols-5 gap-4 sm:gap-6 mt-8"
             key={`grid-${isInView}-${scrollDirection}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
@@ -253,7 +253,7 @@ const TechStack = () => {
                   transition={{
                     duration: 0.3,
                     ease: "easeOut",
-                    delay: isInView ? index * 0.03 : 0, 
+                    delay: isInView ? index * 0.03 : 0,
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
