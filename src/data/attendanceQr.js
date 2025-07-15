@@ -25,7 +25,7 @@ Java Swing · MySQL · net.glxn.qrgen · sarxos.webcam-capture · Gson
 
   image: "/images/attendance-qr.jpg",
   github: "https://github.com/danahparis21/AttendanceQRCodeSystem",
-  video: "/videos/attendance-demo.mp4",
+  video: "https://youtu.be/AuVjcGy-YCs",
 };
 
 export default attendanceQRProject;
