@@ -1,7 +1,9 @@
+import ReactPlayer from "react-player";
+
 const myCalendarProject = {
   title: "myCalendar – Web-Based Scheduling System",
   shortDescription:
-    "A feature-rich scheduling platform with drag-and-drop events, recurring reminders, and role-based access built in PHP and JavaScript.",
+    "A scheduling platform with drag-and-drop events, recurring reminders, and role-based access built in PHP and JavaScript.",
 
   description: `
 ## Purpose
@@ -27,7 +29,8 @@ PHP · MySQL · JavaScript · HTML · CSS · Bootstrap · PHPMailer
 
   image: "/images/myCalendar.png",
   github: "https://github.com/danahparis21/calendar_websystem",
-  video: "/videos/mycalendar-demo.mp4",
+  video: "https://youtu.be/cw_VLfp3KDY",
+
 };
 
 export default myCalendarProject;

@@ -187,9 +187,12 @@ export default {
         glow5: "#ffffce",
       },
       screens: {
-        "custom-xl": "1201px", 
+        "custom-xl": "1201px",
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [
+    require("tailwind-scrollbar"),
+    require("@tailwindcss/aspect-ratio"), // ✅ add this line
+  ],
 };

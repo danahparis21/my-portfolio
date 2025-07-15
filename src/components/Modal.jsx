@@ -2,6 +2,15 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import { useTheme } from "../context/ThemeContext";
+import ReactPlayer from "react-player";
+
+function getYouTubeID(url) {
+  const match = url.match(
+    /(?:youtube\.com.*(?:\/|v=)|youtu\.be\/)([^"&?\/ ]{11})/
+  );
+  return match ? match[1] : "";
+}
+
 const Modal = ({ isOpen, onClose, project, darkMode }) => {
   if (!isOpen) return null;
 
@@ -71,15 +80,20 @@ const Modal = ({ isOpen, onClose, project, darkMode }) => {
             {/* Video */}
             {project?.video && (
               <motion.div
-                className="aspect-video w-full sm:h-[300px] md:h-[360px] overflow-hidden rounded-lg mb-8 bg-black/40 border border-white/10"
+                className="relative w-full pb-[56.25%] mb-8 bg-black/40 border border-white/10 rounded-lg overflow-hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <video
-                  src={project.video}
-                  controls
-                  className="w-full h-full object-contain"
+                <iframe
+                  src={`https://www.youtube.com/embed/${getYouTubeID(
+                    project.video
+                  )}`}
+                  title={`${project.title} video demo`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full rounded-lg"
                 />
               </motion.div>
             )}

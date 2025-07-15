@@ -27,7 +27,7 @@ Java Swing · MySQL · AWT Print API · XChart
 
   image: "/images/serenity-cove.jpg",
   github: "https://github.com/Ivanaticsss/2105_RFDS",
-  video: "/videos/serenity-cove-demo.mp4",
+  video: "https://youtu.be/ZmOQl8-4nNQ",
 };
 
 export default serenityCoveProject;

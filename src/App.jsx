@@ -7,7 +7,8 @@ import Home from "./components/Home";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Contacts from "./components/Contacts";
-import { useTheme } from "./context/ThemeContext"; // make sure this is correct
+import { useTheme } from "./context/ThemeContext"; 
+import TestVideo from "./components/TestVideo"; 
 function App() {
   const { darkMode } = useTheme();
 
@@ -40,6 +41,7 @@ function App() {
         </section>
         <section id="contact">
           <Contacts />
+  
         </section>
       </div>
     </div>

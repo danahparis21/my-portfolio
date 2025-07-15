@@ -27,7 +27,7 @@ React · Vite · Appwrite · EmailJS · Google OAuth · React Toastify · Tailwi
 
   image: "/images/login.jpg",
   github: "https://github.com/danahparis21/react-oauth-login",
-  video: "/videos/react-oauth-login-demo.mp4",
+  video: "https://youtu.be/de2EHShm2D0",
 };
 
 export default LoginProject;

@@ -1,9 +1,10 @@
 // src/data/andoks.js
 const andoksProject = {
-    title: "Andok’s Food Ordering System",
-    shortDescription: "A full-featured food ordering and delivery system built with JavaFX, MySQL, and CSS for UI.",
+  title: "Andok’s Food Ordering System",
+  shortDescription:
+    "A full-featured food ordering and delivery system built with JavaFX, MySQL, and CSS for UI.",
 
-    description: `
+  description: `
     Andok’s Food Ordering System is a full-featured desktop application built with JavaFX for Andok’s, a local restaurant in the Philippines.
     
     ## Purpose
@@ -25,11 +26,10 @@ const andoksProject = {
     
    
     `,
-    
-    image: "/images/andoks.jpg",
-    github: "https://github.com/danahparis21/FoodDeliverySystem",
-    video: "/videos/andoks-demo.mp4",
-  };
-  
-  export default andoksProject;
-  
+
+  image: "/images/andoks.jpg",
+  github: "https://github.com/danahparis21/FoodDeliverySystem",
+  video: "https://youtu.be/K89caVI1Bdc",
+};
+
+export default andoksProject;
