@@ -53,7 +53,3 @@ Developed by **Danah Paris**
 
 ---
 
-## 📜 License
-
-This project is for personal and educational showcase purposes.  
-You're welcome to explore and take inspiration—credit is appreciated!
