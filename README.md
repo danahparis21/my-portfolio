@@ -1,12 +1,59 @@
-# React + Vite
+# 🌐 Danah Paris – Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website showcasing my web development projects, skills, and resume. Built with React, Tailwind CSS, and Vite for fast performance and sleek UI/UX. Includes animations, dark mode, and live video demos of my work.
 
-Currently, two official plugins are available:
+🔗 **Live Site:** [danahparis-portfolio.netlify.app](https://danahparis-portfolio.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** – Component-based architecture
+- **Tailwind CSS** – Utility-first styling
+- **Vite** – Fast dev environment and builds
+- **Framer Motion** – Smooth animations
+- **EmailJS** – Contact form functionality
+- **Dark Mode** – Theme toggle support
+- **Netlify** – Deployed and hosted
+
+---
+
+## Features
+
+- Modal-based **video previews** of each project
+- Dark/light theme toggle
+- Fully **responsive** across all screen sizes
+- **Resume download** (PDF)
+- Contact form with EmailJS integration
+- Smooth entrance **animations** using Framer Motion
+- Project GitHub links and live demo buttons
+
+---
+
+## Folder Structure Highlights
+
+- `/src/components` – Reusable UI components
+- `/src/data` – Project details including title, tech, video, etc.
+- `/public` – Static assets like `icon.png` and `myResume.pdf`
+
+---
+
+## About Me
+
+This project serves as a central hub for my development work and reflects my skills in modern web development. I aimed to combine clean design, performance, and accessibility.
+
+---
+
+## Contact
+
+Developed by **Danah Paris**
+
+📧 Email: micadanah21@gmail.com  
+📍 BSIT – BatStateU ARASOF Nasugbu
+
+---
+
+## 📜 License
+
+This project is for personal and educational showcase purposes.  
+You're welcome to explore and take inspiration—credit is appreciated!
