@@ -266,7 +266,7 @@ function Home() {
               glow: "hover:shadow-purple-300/30",
             },
             {
-              href: "/public/myResume.pdf",
+              href: "/myResume.pdf",
               icon: "fas fa-file-alt",
               color: "hover:text-yellow-300 dark:hover:text-yellow-200",
               glow: "hover:shadow-yellow-300/30",
