@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-      {/* 🌈 Global Background Layer */}
+      {/* Global Background Layer */}
       <div
         className={`fixed inset-0 -z-50 transition-colors duration-700 ${
           darkMode ? "bg-[#070918]" : "bg-white"
@@ -23,7 +23,7 @@ function App() {
 
   
 
-      {/* 💡 Scrollable App Content */}
+      {/* Scrollable App Content */}
       <div
         className="relative bg-transparent text-neutral-800 dark:text-white font-sans overflow-y-scroll overflow-x-hidden h-screen scroll-smooth
         [&::-webkit-scrollbar]:hidden
